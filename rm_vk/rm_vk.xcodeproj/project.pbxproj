@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		85D959412910467D001FA5DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959402910467D001FA5DC /* AppDelegate.swift */; };
 		85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959422910467D001FA5DC /* SceneDelegate.swift */; };
-		85D959452910467D001FA5DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959442910467D001FA5DC /* ViewController.swift */; };
+		85D959452910467D001FA5DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959442910467D001FA5DC /* LoginViewController.swift */; };
 		85D959482910467D001FA5DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D959462910467D001FA5DC /* Main.storyboard */; };
 		85D9594A29104680001FA5DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85D9594929104680001FA5DC /* Assets.xcassets */; };
 		85D9594D29104680001FA5DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85D9594B29104680001FA5DC /* LaunchScreen.storyboard */; };
+		85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959772911AFAE001FA5DC /* UITextField+Extension.swift */; };
+		85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959792911B00C001FA5DC /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		85D9593D2910467D001FA5DC /* rm_vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rm_vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D959402910467D001FA5DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85D959422910467D001FA5DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		85D959442910467D001FA5DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		85D959442910467D001FA5DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		85D959472910467D001FA5DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		85D9594929104680001FA5DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85D9594C29104680001FA5DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85D9594E29104680001FA5DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85D959772911AFAE001FA5DC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		85D959792911B00C001FA5DC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,23 @@
 			children = (
 				85D959402910467D001FA5DC /* AppDelegate.swift */,
 				85D959422910467D001FA5DC /* SceneDelegate.swift */,
-				85D959442910467D001FA5DC /* ViewController.swift */,
+				85D959442910467D001FA5DC /* LoginViewController.swift */,
+				85D959762911AF98001FA5DC /* Extension */,
 				85D959462910467D001FA5DC /* Main.storyboard */,
 				85D9594929104680001FA5DC /* Assets.xcassets */,
 				85D9594B29104680001FA5DC /* LaunchScreen.storyboard */,
 				85D9594E29104680001FA5DC /* Info.plist */,
 			);
 			path = rm_vk;
+			sourceTree = "<group>";
+		};
+		85D959762911AF98001FA5DC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				85D959772911AFAE001FA5DC /* UITextField+Extension.swift */,
+				85D959792911B00C001FA5DC /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +193,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85D959452910467D001FA5DC /* ViewController.swift in Sources */,
+				85D959452910467D001FA5DC /* LoginViewController.swift in Sources */,
 				85D959412910467D001FA5DC /* AppDelegate.swift in Sources */,
+				85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */,
+				85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */,
 				85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
