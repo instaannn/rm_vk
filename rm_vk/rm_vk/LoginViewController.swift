@@ -40,7 +40,7 @@ final class LoginViewController: UIViewController {
         removeObserver()
     }
 
-    // MARK: - Navigation
+    // MARK: - Public methods
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == Constants.identifierSegue {
