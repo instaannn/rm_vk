@@ -9,7 +9,7 @@ final class LoginViewController: UIViewController {
 
     private enum Constants {
         static let lightBorderColorName = "lightBorder"
-        static let identifierSegue = "loginVC"
+        static let segueIdentifier = "loginVC"
         static let alertTitle = "Ошибка"
         static let alertMessage = "Логин и/или пароль неверны."
         static let loginText = "admin"
@@ -43,13 +43,11 @@ final class LoginViewController: UIViewController {
     // MARK: - Public methods
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == Constants.identifierSegue {
-            if checkLoginInfo() {
-                return true
-            } else {
-                showAlert(title: Constants.alertTitle, message: Constants.alertMessage)
-                return false
-            }
+        guard identifier == Constants.segueIdentifier,
+              checkLoginInfo()
+        else {
+            showAlert(title: Constants.alertTitle, message: Constants.alertMessage)
+            return false
         }
         return true
     }
@@ -94,12 +92,13 @@ final class LoginViewController: UIViewController {
 
     private func checkLoginInfo() -> Bool {
         guard let login = nameTextField.text,
-              let password = passwordTextField.text else { return false }
-        if login == Constants.loginText, password == Constants.passwordText {
-            return true
-        } else {
+              let password = passwordTextField.text,
+              login == Constants.loginText,
+              password == Constants.passwordText
+        else {
             return false
         }
+        return true
     }
 
     @objc private func keyboardWillShowAction(notification: Notification) {
