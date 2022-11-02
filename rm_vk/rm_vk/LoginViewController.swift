@@ -40,6 +40,8 @@ final class LoginViewController: UIViewController {
         removeObserver()
     }
 
+    // MARK: - Navigation
+
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == Constants.identifierSegue {
             if checkLoginInfo() {
@@ -67,21 +69,21 @@ final class LoginViewController: UIViewController {
     private func addObserver() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(keyboardWillShow),
+            selector: #selector(keyboardWillShowAction),
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(keyboardWillHide),
+            selector: #selector(keyboardWillHideAction),
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
     }
 
     private func addTapGesture() {
-        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardHide))
+        let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardHideTapAction))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
     }
 
@@ -100,7 +102,7 @@ final class LoginViewController: UIViewController {
         }
     }
 
-    @objc private func keyboardWillShow(notification: Notification) {
+    @objc private func keyboardWillShowAction(notification: Notification) {
         let info = notification.userInfo as? NSDictionary
         guard let kbSize = (info?.value(
             forKey: UIResponder.keyboardFrameEndUserInfoKey
@@ -111,12 +113,12 @@ final class LoginViewController: UIViewController {
         scrollView.scrollIndicatorInsets = contentInsert
     }
 
-    @objc private func keyboardWillHide(notification: Notification) {
+    @objc private func keyboardWillHideAction(notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
 
-    @objc private func keyboardHide() {
+    @objc private func keyboardHideTapAction() {
         scrollView.endEditing(true)
     }
 }

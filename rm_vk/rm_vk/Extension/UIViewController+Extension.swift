@@ -14,9 +14,9 @@ extension UIViewController {
     // MARK: - Public methods
 
     func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: Constants.alertActionTitle, style: .cancel, handler: .none)
-        alert.addAction(action)
-        present(alert, animated: true, completion: .none)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: .none)
     }
 }
