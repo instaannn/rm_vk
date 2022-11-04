@@ -24,7 +24,7 @@ final class LikeControl: UIControl {
     private var likeCount = 0
 
     // MARK: - Initializers
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         createGestureRecognizer()
@@ -42,7 +42,7 @@ final class LikeControl: UIControl {
         addGestureRecognizer(tapGestureRecognizer)
     }
 
-    @objc func tapAction(_: UITapGestureRecognizer) {
+    @objc private func tapAction(_: UITapGestureRecognizer) {
         isLike.toggle()
 
         guard isLike else {

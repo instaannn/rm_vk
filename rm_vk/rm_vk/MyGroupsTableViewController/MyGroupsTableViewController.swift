@@ -38,17 +38,6 @@ final class MyGroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
     }
-    
-    // MARK: - IBAction
-
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        guard segue.identifier == Constants.segueIdentifier,
-              let allGroupsTableViewController = segue.source as? AllGroupsTableViewController,
-              let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow else { return }
-        let group = allGroupsTableViewController.groups[indexPath.row]
-        groups.append(group)
-        tableView.reloadData()
-    }
 
     // MARK: - Public methods
 
@@ -73,6 +62,17 @@ final class MyGroupsTableViewController: UITableViewController {
         guard editingStyle == .delete else { return }
         groups.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+
+    // MARK: - IBAction
+
+    @IBAction private func addGroup(segue: UIStoryboardSegue) {
+        guard segue.identifier == Constants.segueIdentifier,
+              let allGroupsTableViewController = segue.source as? AllGroupsTableViewController,
+              let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow else { return }
+        let group = allGroupsTableViewController.groups[indexPath.row]
+        groups.append(group)
+        tableView.reloadData()
     }
 
     // MARK: - Private Methods

@@ -18,9 +18,9 @@ final class AllGroupsTableViewController: UITableViewController {
         static let threeGroupTitle = "Caramba"
     }
 
-    // MARK: - Public Properties
+    // MARK: - Private Properties
 
-    var groups = [
+    private(set) var groups = [
         Group(
             avatarImageName: Constants.oneGroupImageName,
             title: Constants.oneGroupTitle,

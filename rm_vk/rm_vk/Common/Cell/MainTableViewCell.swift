@@ -5,19 +5,20 @@ import UIKit
 
 /// Главная универсальная ячейка
 final class MainTableViewCell: UITableViewCell {
-    
     // MARK: - Constants
-    
+
     private enum Constants {
         static let lightColorName = "lightColor"
     }
-    
+
     // MARK: - IBOutlet
 
     @IBOutlet private var avatarImageView: UIImageView!
     @IBOutlet private var shadowView: UIView!
     @IBOutlet private var nameLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
+
+    // MARK: - Lifecycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +38,7 @@ final class MainTableViewCell: UITableViewCell {
         nameLabel.text = model.title
         descriptionLabel.text = model.description
     }
-    
+
     // MARK: - Private methods
 
     private func setupShadowView() {
