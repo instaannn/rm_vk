@@ -103,12 +103,10 @@ final class FriendsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.segueIdentifier {
-            if let photosCollectionViewController = segue.destination as? PhotosCollectionViewController {
-                guard let imageName = sender as? String else { return }
-                photosCollectionViewController.imageName = imageName
-            }
-        }
+        guard segue.identifier == Constants.segueIdentifier,
+              let photosCollectionViewController = segue.destination as? PhotosCollectionViewController,
+              let imageName = sender as? String else { return }
+        photosCollectionViewController.imageName = imageName
     }
 
     // MARK: - Private Methods

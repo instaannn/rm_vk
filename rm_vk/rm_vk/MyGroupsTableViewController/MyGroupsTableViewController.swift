@@ -14,6 +14,7 @@ final class MyGroupsTableViewController: UITableViewController {
         static let oneGroupTitle = "We love Homer"
         static let twoGroupTitle = "Blue Hair"
         static let oneGroupDescription = "клуб любителей гомера"
+        static let segueIdentifier = "addGroup"
     }
 
     // MARK: - Private Properties
@@ -39,14 +40,12 @@ final class MyGroupsTableViewController: UITableViewController {
     }
 
     @IBAction func addGroup(segue: UIStoryboardSegue) {
-        if segue.identifier == "addGroup" {
-            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController else { return }
-            if let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow {
-                let group = allGroupsTableViewController.groups[indexPath.row]
-                groups.append(group)
-                tableView.reloadData()
-            }
-        }
+        guard segue.identifier == Constants.segueIdentifier,
+              let allGroupsTableViewController = segue.source as? AllGroupsTableViewController,
+              let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow else { return }
+        let group = allGroupsTableViewController.groups[indexPath.row]
+        groups.append(group)
+        tableView.reloadData()
     }
 
     // MARK: - UITableViewDataSource
