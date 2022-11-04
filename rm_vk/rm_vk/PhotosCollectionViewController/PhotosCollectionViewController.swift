@@ -9,19 +9,14 @@ final class PhotosCollectionViewController: UICollectionViewController {
 
     private enum Constants {
         static let cellIdentifier = "PhotoCollectionViewCell"
+        static let imageName = ""
     }
 
     // MARK: - Public Properties
 
-    var imageName = ""
+    var imageName = Constants.imageName
 
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    // MARK: UICollectionViewDataSource
+    // MARK: - Public methods
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1

@@ -53,13 +53,7 @@ final class AllGroupsTableViewController: UITableViewController {
         )
     ]
 
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    // MARK: - UITableViewDataSource
+    // MARK: - Public methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         groups.count

@@ -38,8 +38,8 @@ final class LikeControl: UIControl {
     // MARK: - Private methods
 
     private func createGestureRecognizer() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
-        addGestureRecognizer(tap)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
+        addGestureRecognizer(tapGestureRecognizer)
     }
 
     @objc func tapAction(_: UITapGestureRecognizer) {

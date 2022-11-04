@@ -5,6 +5,13 @@ import UIKit
 
 /// Главная универсальная ячейка
 final class MainTableViewCell: UITableViewCell {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let lightColorName = "lightColor"
+    }
+    
     // MARK: - IBOutlet
 
     @IBOutlet private var avatarImageView: UIImageView!
@@ -14,7 +21,7 @@ final class MainTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        shadowView.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 0.5)
+        setupShadowView()
     }
 
     // MARK: - Public methods
@@ -29,5 +36,11 @@ final class MainTableViewCell: UITableViewCell {
         avatarImageView.image = UIImage(named: model.avatarImageName)
         nameLabel.text = model.title
         descriptionLabel.text = model.description
+    }
+    
+    // MARK: - Private methods
+
+    private func setupShadowView() {
+        shadowView.layer.shadowColor = UIColor(named: Constants.lightColorName)?.cgColor
     }
 }

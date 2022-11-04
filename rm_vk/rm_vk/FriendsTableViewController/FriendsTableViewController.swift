@@ -80,7 +80,7 @@ final class FriendsTableViewController: UITableViewController {
         registerCell()
     }
 
-    // MARK: - UITableViewDataSource
+    // MARK: - Public methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         users.count
@@ -94,13 +94,9 @@ final class FriendsTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: - UITableViewDelegate
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.segueIdentifier, sender: users[indexPath.row].avatarImageName)
     }
-
-    // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,

@@ -38,6 +38,8 @@ final class MyGroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
     }
+    
+    // MARK: - IBAction
 
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         guard segue.identifier == Constants.segueIdentifier,
@@ -48,7 +50,7 @@ final class MyGroupsTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    // MARK: - UITableViewDataSource
+    // MARK: - Public methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         groups.count
@@ -68,10 +70,9 @@ final class MyGroupsTableViewController: UITableViewController {
         commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath
     ) {
-        if editingStyle == .delete {
-            groups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+        guard editingStyle == .delete else { return }
+        groups.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
 
     // MARK: - Private Methods
