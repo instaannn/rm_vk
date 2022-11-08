@@ -9,54 +9,28 @@ final class AllGroupsTableViewController: UITableViewController {
 
     private enum Constants {
         static let cellIdentifier = "AllGroupTableViewCell"
-        static let oneGroupImageName = "liza"
-        static let twoGroupImageName = "maggie"
-        static let oneGroupTitle = "Liza's club"
-        static let twoGroupTitle = "Agu"
-        static let oneGroupDescription = "Отличники"
-        static let threeGroupImageName = "bart"
-        static let threeGroupTitle = "Caramba"
     }
+
+    // MARK: - IBOutlet
+
+    @IBOutlet var searchBar: UISearchBar!
 
     // MARK: - Private Properties
 
-    private(set) var groups = [
-        Group(
-            avatarImageName: Constants.oneGroupImageName,
-            title: Constants.oneGroupTitle,
-            description: Constants.oneGroupDescription
-        ),
-        Group(
-            avatarImageName: Constants.twoGroupImageName,
-            title: Constants.twoGroupTitle,
-            description: nil
-        ),
-        Group(
-            avatarImageName: Constants.threeGroupImageName,
-            title: Constants.threeGroupTitle,
-            description: nil
-        ),
-        Group(
-            avatarImageName: Constants.oneGroupImageName,
-            title: Constants.oneGroupTitle,
-            description: Constants.oneGroupDescription
-        ),
-        Group(
-            avatarImageName: Constants.twoGroupImageName,
-            title: Constants.twoGroupTitle,
-            description: nil
-        ),
-        Group(
-            avatarImageName: Constants.threeGroupImageName,
-            title: Constants.threeGroupTitle,
-            description: nil
-        )
-    ]
+    private(set) var groups = Groups.getGroups()
+    private(set) var filterGroups: [Group] = []
+
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        filterGroups = groups
+    }
 
     // MARK: - Public methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        groups.count
+        filterGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +38,24 @@ final class AllGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? AllGroupTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(model: groups[indexPath.row])
+        cell.configureGroup(model: filterGroups[indexPath.row])
         return cell
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension AllGroupsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterGroups = []
+
+        if searchText.isEmpty {
+            filterGroups = groups
+        } else {
+            for group in groups where group.title.lowercased().contains(searchText.lowercased()) {
+                filterGroups.append(group)
+            }
+        }
+        tableView.reloadData()
     }
 }

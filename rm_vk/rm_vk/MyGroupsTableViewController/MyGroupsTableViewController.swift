@@ -69,8 +69,11 @@ final class MyGroupsTableViewController: UITableViewController {
     @IBAction private func addGroup(segue: UIStoryboardSegue) {
         guard segue.identifier == Constants.segueIdentifier,
               let allGroupsTableViewController = segue.source as? AllGroupsTableViewController,
-              let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow else { return }
-        let group = allGroupsTableViewController.groups[indexPath.row]
+              let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow,
+              !groups.contains(
+                  where: { $0.title == allGroupsTableViewController.filterGroups[indexPath.row].title }
+              ) else { return }
+        let group = allGroupsTableViewController.filterGroups[indexPath.row]
         groups.append(group)
         tableView.reloadData()
     }

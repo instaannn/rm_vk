@@ -12,8 +12,10 @@ final class LoginViewController: UIViewController {
         static let segueIdentifier = "loginVC"
         static let alertTitle = "Ошибка"
         static let alertMessage = "Логин и/или пароль неверны."
-        static let loginText = "admin"
-        static let passwordText = "123456"
+        static let loginText = "1"
+        static let passwordText = "1"
+        static let uIStoryboardName = "Main"
+        static let viewControllerIdentifier = "MainTabBarController"
     }
 
     // MARK: - IBOutlet
@@ -21,6 +23,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loadingView: LoadingView!
 
     // MARK: - Lifecycle
 
@@ -40,16 +43,23 @@ final class LoginViewController: UIViewController {
         removeObserver()
     }
 
-    // MARK: - Public methods
+    // MARK: - IBAction
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard identifier == Constants.segueIdentifier,
-              checkLoginInfo()
+    @IBAction private func loginButtonAction() {
+        guard checkLoginInfo()
         else {
             showAlert(title: Constants.alertTitle, message: Constants.alertMessage)
-            return false
+            return
         }
-        return true
+        loadingView.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let storyboard = UIStoryboard(name: Constants.uIStoryboardName, bundle: nil)
+            guard let mainTabBarController = storyboard.instantiateViewController(
+                withIdentifier: Constants.viewControllerIdentifier
+            ) as? MainTabBarController else { return }
+            mainTabBarController.modalPresentationStyle = .fullScreen
+            self.present(mainTabBarController, animated: true)
+        }
     }
 
     // MARK: - Private Methods

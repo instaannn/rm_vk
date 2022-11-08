@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "avatarMOne.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

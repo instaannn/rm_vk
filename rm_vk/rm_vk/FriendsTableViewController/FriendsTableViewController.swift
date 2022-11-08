@@ -10,92 +10,53 @@ final class FriendsTableViewController: UITableViewController {
     private enum Constants {
         static let cellIdentifier = "MainTableViewCell"
         static let segueIdentifier = "showPhotosCollectionView"
-        static let friendOneName = "Homer"
-        static let friendTwoName = "Marge"
-        static let friendThreeName = "Liza"
-        static let friendFourName = "Bart"
-        static let friendFiveName = "Maggie"
-        static let friendDescription = "Springfield"
     }
 
     // MARK: - Private Properties
 
-    private let users = [
-        User(
-            avatarImageName: Constants.friendOneName.lowercased(),
-            name: Constants.friendOneName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendTwoName.lowercased(),
-            name: Constants.friendTwoName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendThreeName.lowercased(),
-            name: Constants.friendThreeName,
-            description: nil
-        ),
-        User(
-            avatarImageName: Constants.friendFourName.lowercased(),
-            name: Constants.friendFourName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendFiveName.lowercased(),
-            name: Constants.friendFiveName,
-            description: nil
-        ),
-        User(
-            avatarImageName: Constants.friendOneName.lowercased(),
-            name: Constants.friendOneName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendTwoName.lowercased(),
-            name: Constants.friendTwoName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendThreeName.lowercased(),
-            name: Constants.friendThreeName,
-            description: nil
-        ),
-        User(
-            avatarImageName: Constants.friendFourName.lowercased(),
-            name: Constants.friendFourName,
-            description: Constants.friendDescription
-        ),
-        User(
-            avatarImageName: Constants.friendFiveName.lowercased(),
-            name: Constants.friendFiveName,
-            description: nil
-        )
-    ]
+    private let users = Users.getUsers()
+    private var sortedUsers = [Character: [User]]()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        sortUsers()
     }
 
     // MARK: - Public methods
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        sortedUsers.keys.count
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        users.count
+        let sortedUsersKeys = sortedUsers.keys.sorted()
+        let userCount = sortedUsers[sortedUsersKeys[section]]?.count ?? 0
+        return userCount
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        sortedUsers.keys.sorted().map { String($0) }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        String(sortedUsers.keys.sorted()[section])
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configureUser(model: users[indexPath.row])
+        guard let user = getOneUser(indexPath: indexPath) else { return UITableViewCell() }
+        cell.configureUser(model: user)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constants.segueIdentifier, sender: users[indexPath.row].avatarImageName)
+        guard let user = getOneUser(indexPath: indexPath) else { return }
+        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.avatarImageName)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,5 +73,29 @@ final class FriendsTableViewController: UITableViewController {
             UINib(nibName: Constants.cellIdentifier, bundle: nil),
             forCellReuseIdentifier: Constants.cellIdentifier
         )
+    }
+
+    private func sortUsers() {
+        sortedUsers = sort(users: users)
+    }
+
+    private func sort(users: [User]) -> [Character: [User]] {
+        var sortedUsers = [Character: [User]]()
+        users.forEach {
+            guard let firstLetter = $0.name.first else { return }
+            guard var charUsers = sortedUsers[firstLetter] else { sortedUsers[firstLetter] = [$0]
+                return
+            }
+            charUsers.append($0)
+            sortedUsers[firstLetter] = charUsers
+        }
+        return sortedUsers
+    }
+
+    private func getOneUser(indexPath: IndexPath) -> User? {
+        let firstChar = sortedUsers.keys.sorted()[indexPath.section]
+        guard let users = sortedUsers[firstChar] else { return nil }
+        let user = users[indexPath.row]
+        return user
     }
 }
