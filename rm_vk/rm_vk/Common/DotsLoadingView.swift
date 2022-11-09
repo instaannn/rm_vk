@@ -1,10 +1,10 @@
-// LoadingView.swift
+// DotsLoadingView.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Анимация загрузки три точки
-final class LoadingView: UIView {
+final class DotsLoadingView: UIView {
     // MARK: - Constants
 
     private enum Constants {
@@ -52,10 +52,10 @@ final class LoadingView: UIView {
             stackView.addArrangedSubview(circle)
         }
         addSubview(stackView)
-        animate()
+        showAnimateCircles()
     }
 
-    private func animate() {
+    private func showAnimateCircles() {
         var delay = 0.0
         circles.forEach {
             delay += 0.3

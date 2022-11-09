@@ -23,21 +23,21 @@ final class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupShadowView()
-        addTapGesture()
+        addTapGestureRecognizer()
     }
 
     // MARK: - Public methods
 
-    func configureUser(model: User) {
-        avatarImageView.image = UIImage(named: model.avatarImageName)
-        nameLabel.text = model.name
-        descriptionLabel.text = model.description
+    func configureUser(user: User) {
+        avatarImageView.image = UIImage(named: user.avatarImageName)
+        nameLabel.text = user.name
+        descriptionLabel.text = user.description
     }
 
-    func configureGroup(model: Group) {
-        avatarImageView.image = UIImage(named: model.avatarImageName)
-        nameLabel.text = model.title
-        descriptionLabel.text = model.description
+    func configureGroup(group: Group) {
+        avatarImageView.image = UIImage(named: group.avatarImageName)
+        nameLabel.text = group.title
+        descriptionLabel.text = group.description
     }
 
     // MARK: - Private methods
@@ -46,13 +46,13 @@ final class MainTableViewCell: UITableViewCell {
         shadowView.layer.shadowColor = UIColor(named: Constants.lightColorName)?.cgColor
     }
 
-    private func addTapGesture() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+    private func addTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showAffineTransformAction))
         avatarImageView.addGestureRecognizer(tapGestureRecognizer)
         avatarImageView.isUserInteractionEnabled = true
     }
 
-    @objc private func tapGestureAction() {
+    @objc private func showAffineTransformAction() {
         avatarImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         UIView.animate(
             withDuration: 1,

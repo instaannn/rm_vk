@@ -23,14 +23,14 @@ final class LoginViewController: UIViewController {
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet private var loadingView: LoadingView!
+    @IBOutlet private var loadingView: DotsLoadingView!
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextField()
-        addTapGesture()
+        addTapGestureRecognizer()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +90,7 @@ final class LoginViewController: UIViewController {
         )
     }
 
-    private func addTapGesture() {
+    private func addTapGestureRecognizer() {
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardHideTapAction))
         scrollView.addGestureRecognizer(hideKeyboardGesture)
     }

@@ -50,7 +50,7 @@ final class FriendsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
         guard let user = getOneUser(indexPath: indexPath) else { return UITableViewCell() }
-        cell.configureUser(model: user)
+        cell.configureUser(user: user)
         return cell
     }
 

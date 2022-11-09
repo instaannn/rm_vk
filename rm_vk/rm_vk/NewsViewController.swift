@@ -23,7 +23,7 @@ extension NewsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? NewsTableViewCell else { return UITableViewCell() }
-        cell.configure(model: AllNews.getNews()[indexPath.row])
+        cell.configure(news: AllNews.getNews()[indexPath.row])
         return cell
     }
 }

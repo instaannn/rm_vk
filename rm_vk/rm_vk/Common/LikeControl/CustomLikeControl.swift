@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// Универсальный лайн контрол
+/// Универсальный лайк контрол
 @IBDesignable final class CustomLikeControl: UIControl {
     // MARK: - Constants
 
@@ -41,7 +41,6 @@ import UIKit
 
     // MARK: - Private Properties
 
-    private var isLike = false
     private var likeCount = 0
 
     @IBInspectable private var isLiked: Bool = false {

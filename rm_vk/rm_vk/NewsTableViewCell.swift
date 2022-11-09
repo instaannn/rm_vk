@@ -16,12 +16,12 @@ final class NewsTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(model: News) {
-        avatarImageView.image = UIImage(named: model.avatarImageName)
-        titleLabel.text = model.title
-        timeSubtitleLabel.text = model.timeSubtitle
-        descriptionLabel.text = model.description
-        postImageView.image = UIImage(named: model.postImageName)
-        viewsLabel.text = model.views
+    func configure(news: News) {
+        avatarImageView.image = UIImage(named: news.avatarImageName)
+        titleLabel.text = news.title
+        timeSubtitleLabel.text = news.timeSubtitle
+        descriptionLabel.text = news.description
+        postImageView.image = UIImage(named: news.postImageName)
+        viewsLabel.text = news.views
     }
 }

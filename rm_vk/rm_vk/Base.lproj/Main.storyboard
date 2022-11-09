@@ -86,7 +86,7 @@
                                             <action selector="loginButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="ijY-Gd-V0A"/>
                                         </connections>
                                     </button>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNp-h9-zmX" customClass="LoadingView" customModule="rm_vk" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNp-h9-zmX" customClass="DotsLoadingView" customModule="rm_vk" customModuleProvider="target">
                                         <rect key="frame" x="182" y="262" width="50" height="10"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>

@@ -50,7 +50,7 @@ final class MyGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(model: groups[indexPath.row])
+        cell.configureGroup(group: groups[indexPath.row])
         return cell
     }
 
