@@ -13,7 +13,7 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - IBOutlet
 
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet private var searchBar: UISearchBar!
 
     // MARK: - Private Properties
 
@@ -24,7 +24,7 @@ final class AllGroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterGroups = groups
+        setupFilterGroups()
     }
 
     // MARK: - Public methods
@@ -41,6 +41,12 @@ final class AllGroupsTableViewController: UITableViewController {
         cell.configureGroup(model: filterGroups[indexPath.row])
         return cell
     }
+
+    // MARK: - Private Methods
+
+    private func setupFilterGroups() {
+        filterGroups = groups
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -50,7 +56,7 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         filterGroups = []
 
         if searchText.isEmpty {
-            filterGroups = groups
+            setupFilterGroups()
         } else {
             for group in groups where group.title.lowercased().contains(searchText.lowercased()) {
                 filterGroups.append(group)

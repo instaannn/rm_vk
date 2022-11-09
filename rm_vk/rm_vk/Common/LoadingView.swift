@@ -14,9 +14,9 @@ final class LoadingView: UIView {
 
     // MARK: - Private Visual Components
 
-    private let circleOne = UIView()
-    private let circleTwo = UIView()
-    private let circleThree = UIView()
+    private let circleOneView = UIView()
+    private let circleTwoView = UIView()
+    private let circleThreeView = UIView()
     private var circles: [UIView] = []
 
     private lazy var stackView: UIStackView = {
@@ -40,10 +40,10 @@ final class LoadingView: UIView {
         configure()
     }
 
-    // MARK: - Public methods
+    // MARK: - Private Methods
 
-    func configure() {
-        circles = [circleOne, circleTwo, circleThree]
+    private func configure() {
+        circles = [circleOneView, circleTwoView, circleThreeView]
 
         for circle in circles {
             circle.layer.cornerRadius = bounds.height / 2
@@ -54,8 +54,6 @@ final class LoadingView: UIView {
         addSubview(stackView)
         animate()
     }
-
-    // MARK: - Private Methods
 
     private func animate() {
         var delay = 0.0

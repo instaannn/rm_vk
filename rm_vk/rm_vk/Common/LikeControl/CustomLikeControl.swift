@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Универсальный лайн контрол
 @IBDesignable final class CustomLikeControl: UIControl {
     // MARK: - Constants
 
@@ -65,10 +66,14 @@ import UIKit
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        stackView.frame = bounds
+        setupStackView()
     }
 
     // MARK: - Private Methods
+
+    private func setupStackView() {
+        stackView.frame = bounds
+    }
 
     private func setupView() {
         stackView = UIStackView(arrangedSubviews: [likeButton, likeCountLabel])

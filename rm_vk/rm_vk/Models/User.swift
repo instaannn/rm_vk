@@ -1,7 +1,7 @@
 // User.swift
 // Copyright © RoadMap. All rights reserved.
 
-/// Модель для списка друзей
+/// Пользователь
 struct User {
     let avatarImageName: String
     let name: String

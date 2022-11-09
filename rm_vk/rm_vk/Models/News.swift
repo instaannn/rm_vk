@@ -1,7 +1,7 @@
 // News.swift
 // Copyright © RoadMap. All rights reserved.
 
-/// Модель новости
+/// Новости
 struct News {
     let avatarImageName: String
     let title: String

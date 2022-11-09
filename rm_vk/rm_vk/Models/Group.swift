@@ -1,7 +1,7 @@
 // Group.swift
 // Copyright © RoadMap. All rights reserved.
 
-/// Модель для списка групп
+/// Группа
 struct Group {
     let avatarImageName: String
     let title: String
