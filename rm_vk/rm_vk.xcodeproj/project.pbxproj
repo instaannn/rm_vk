@@ -14,7 +14,13 @@
 		854AEB4C2914527E00F12FEA /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 854AEB4A2914527D00F12FEA /* MainTableViewCell.xib */; };
 		854AEB4E29145F3C00F12FEA /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB4D29145F3C00F12FEA /* AllGroupsTableViewController.swift */; };
 		854AEB502914682900F12FEA /* AllGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB4F2914682900F12FEA /* AllGroupTableViewCell.swift */; };
-		854AEB5429147C3400F12FEA /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB5329147C3400F12FEA /* LikeControl.swift */; };
+		855F20C22919C81300D0FC2B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20C12919C81300D0FC2B /* NewsViewController.swift */; };
+		855F20C42919CC6900D0FC2B /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20C32919CC6900D0FC2B /* NewsTableViewCell.swift */; };
+		855F20C62919CEFA00D0FC2B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20C52919CEFA00D0FC2B /* News.swift */; };
+		855F20C8291A615600D0FC2B /* CustomLikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20C7291A615600D0FC2B /* CustomLikeControl.swift */; };
+		855F20CA291ADF8C00D0FC2B /* DotsLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20C9291ADF8C00D0FC2B /* DotsLoadingView.swift */; };
+		855F20CC291B074900D0FC2B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20CB291B074900D0FC2B /* MainTabBarController.swift */; };
+		855F20D0291B1D1500D0FC2B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20CF291B1D1500D0FC2B /* UIView+Extension.swift */; };
 		85D959412910467D001FA5DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959402910467D001FA5DC /* AppDelegate.swift */; };
 		85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959422910467D001FA5DC /* SceneDelegate.swift */; };
 		85D959452910467D001FA5DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959442910467D001FA5DC /* LoginViewController.swift */; };
@@ -36,7 +42,13 @@
 		854AEB4A2914527D00F12FEA /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		854AEB4D29145F3C00F12FEA /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
 		854AEB4F2914682900F12FEA /* AllGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupTableViewCell.swift; sourceTree = "<group>"; };
-		854AEB5329147C3400F12FEA /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
+		855F20C12919C81300D0FC2B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		855F20C32919CC6900D0FC2B /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		855F20C52919CEFA00D0FC2B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		855F20C7291A615600D0FC2B /* CustomLikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLikeControl.swift; sourceTree = "<group>"; };
+		855F20C9291ADF8C00D0FC2B /* DotsLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsLoadingView.swift; sourceTree = "<group>"; };
+		855F20CB291B074900D0FC2B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		855F20CF291B1D1500D0FC2B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		85D9593D2910467D001FA5DC /* rm_vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rm_vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D959402910467D001FA5DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85D959422910467D001FA5DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +78,7 @@
 		854AEB5E2914919300F12FEA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				855F20C9291ADF8C00D0FC2B /* DotsLoadingView.swift */,
 				854AEB60291491A800F12FEA /* LikeControl */,
 				854AEB5F2914919A00F12FEA /* Cell */,
 			);
@@ -84,7 +97,7 @@
 		854AEB60291491A800F12FEA /* LikeControl */ = {
 			isa = PBXGroup;
 			children = (
-				854AEB5329147C3400F12FEA /* LikeControl.swift */,
+				855F20C7291A615600D0FC2B /* CustomLikeControl.swift */,
 			);
 			path = LikeControl;
 			sourceTree = "<group>";
@@ -144,18 +157,21 @@
 			children = (
 				85D959402910467D001FA5DC /* AppDelegate.swift */,
 				85D959422910467D001FA5DC /* SceneDelegate.swift */,
+				85D959442910467D001FA5DC /* LoginViewController.swift */,
 				854AEB64291491ED00F12FEA /* FriendsTableViewController */,
 				854AEB63291491DE00F12FEA /* PhotosCollectionViewController */,
 				854AEB62291491D200F12FEA /* MyGroupsTableViewController */,
 				854AEB61291491C000F12FEA /* AllGroupsTableViewController */,
 				854AEB5E2914919300F12FEA /* Common */,
-				85D959442910467D001FA5DC /* LoginViewController.swift */,
 				85D959762911AF98001FA5DC /* Extension */,
 				85D9598A291328FA001FA5DC /* Models */,
 				85D959462910467D001FA5DC /* Main.storyboard */,
 				85D9594929104680001FA5DC /* Assets.xcassets */,
 				85D9594B29104680001FA5DC /* LaunchScreen.storyboard */,
 				85D9594E29104680001FA5DC /* Info.plist */,
+				855F20C12919C81300D0FC2B /* NewsViewController.swift */,
+				855F20C32919CC6900D0FC2B /* NewsTableViewCell.swift */,
+				855F20CB291B074900D0FC2B /* MainTabBarController.swift */,
 			);
 			path = rm_vk;
 			sourceTree = "<group>";
@@ -165,6 +181,7 @@
 			children = (
 				85D959772911AFAE001FA5DC /* UITextField+Extension.swift */,
 				85D959792911B00C001FA5DC /* UIViewController+Extension.swift */,
+				855F20CF291B1D1500D0FC2B /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -174,6 +191,7 @@
 			children = (
 				85D9598B29132921001FA5DC /* User.swift */,
 				85D9598D291329A3001FA5DC /* Group.swift */,
+				855F20C52919CEFA00D0FC2B /* News.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,19 +311,25 @@
 			files = (
 				85D9598E291329A3001FA5DC /* Group.swift in Sources */,
 				854AEB502914682900F12FEA /* AllGroupTableViewCell.swift in Sources */,
+				855F20CC291B074900D0FC2B /* MainTabBarController.swift in Sources */,
 				85D959452910467D001FA5DC /* LoginViewController.swift in Sources */,
+				855F20C8291A615600D0FC2B /* CustomLikeControl.swift in Sources */,
 				854AEB412914476500F12FEA /* PhotosCollectionViewController.swift in Sources */,
 				85D9599029132D6C001FA5DC /* FriendsTableViewController.swift in Sources */,
 				854AEB4B2914527E00F12FEA /* MainTableViewCell.swift in Sources */,
 				85D959412910467D001FA5DC /* AppDelegate.swift in Sources */,
-				854AEB5429147C3400F12FEA /* LikeControl.swift in Sources */,
 				854AEB4E29145F3C00F12FEA /* AllGroupsTableViewController.swift in Sources */,
 				85D9598C29132921001FA5DC /* User.swift in Sources */,
 				854AEB4629144DDB00F12FEA /* MyGroupsTableViewController.swift in Sources */,
 				85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */,
+				855F20C62919CEFA00D0FC2B /* News.swift in Sources */,
 				85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */,
+				855F20D0291B1D1500D0FC2B /* UIView+Extension.swift in Sources */,
 				854AEB432914489100F12FEA /* PhotoCollectionViewCell.swift in Sources */,
+				855F20C42919CC6900D0FC2B /* NewsTableViewCell.swift in Sources */,
 				85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */,
+				855F20CA291ADF8C00D0FC2B /* DotsLoadingView.swift in Sources */,
+				855F20C22919C81300D0FC2B /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
