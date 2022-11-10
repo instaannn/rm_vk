@@ -9,17 +9,16 @@ final class PhotosCollectionViewController: UICollectionViewController {
 
     private enum Constants {
         static let cellIdentifier = "PhotoCollectionViewCell"
-        static let imageName = ""
     }
 
     // MARK: - Public Properties
 
-    var imageName = Constants.imageName
+    var photosImagesNames: [String] = []
 
     // MARK: - Public methods
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        photosImagesNames.count
     }
 
     override func collectionView(
@@ -30,7 +29,7 @@ final class PhotosCollectionViewController: UICollectionViewController {
             withReuseIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(imageName: imageName)
+        cell.configure(imageName: photosImagesNames[indexPath.row])
         return cell
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XlU-7A-Aai">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -173,12 +173,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="rSB-Aa-SmG"/>
                     <connections>
-                        <segue destination="hfc-GI-KFH" kind="show" identifier="showPhotosCollectionView" id="Z53-Rf-fnt"/>
+                        <segue destination="g61-sN-FNl" kind="show" identifier="showAllPhotosViewController" id="WvN-wG-Luc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djI-7k-RWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2466.666666666667" y="-206.25"/>
+            <point key="canvasLocation" x="2491" y="-206"/>
         </scene>
         <!--My Groups Table View Controller-->
         <scene sceneID="0mO-KS-PwQ">
@@ -347,7 +347,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="128" height="154"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-c4-odG">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-c4-odG">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="124"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="128" id="JgT-rD-CIa"/>
@@ -386,12 +386,50 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zd-5O-wkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.6956521739135" y="-206.25"/>
+            <point key="canvasLocation" x="3910" y="-206"/>
+        </scene>
+        <!--All Photos View Controller-->
+        <scene sceneID="cn3-DB-ELf">
+            <objects>
+                <viewController id="g61-sN-FNl" customClass="AllPhotosViewController" customModule="rm_vk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dWn-5u-AAE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyi-bL-U0N">
+                                <rect key="frame" x="87" y="330.5" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="En3-5W-NYp"/>
+                                    <constraint firstAttribute="width" constant="240" id="zlE-5s-9Zc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IRy-lA-rdN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hyi-bL-U0N" firstAttribute="centerY" secondItem="IRy-lA-rdN" secondAttribute="centerY" id="bgY-92-DKC"/>
+                            <constraint firstItem="Hyi-bL-U0N" firstAttribute="centerX" secondItem="IRy-lA-rdN" secondAttribute="centerX" id="mGB-W8-BPK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="L1x-Rd-Obb">
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" id="HPW-Pf-wCe">
+                            <connections>
+                                <segue destination="hfc-GI-KFH" kind="show" identifier="showUserPhoto" id="caR-lg-UFs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="Hyi-bL-U0N" id="WKr-ZQ-WfV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8hB-lY-d5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3209" y="-206"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="Icp-8F-xeB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MKk-kX-0c1" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MKk-kX-0c1" customClass="CustomNavigationController" customModule="rm_vk" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="friends" id="oJn-l5-txL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jze-N5-8tt">
@@ -589,6 +627,7 @@
     <resources>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="friends" width="28" height="28"/>
         <image name="groups" width="28" height="28"/>

@@ -9,7 +9,8 @@ final class FriendsTableViewController: UITableViewController {
 
     private enum Constants {
         static let cellIdentifier = "MainTableViewCell"
-        static let segueIdentifier = "showPhotosCollectionView"
+        static let segueIdentifier = "showAllPhotosViewController"
+        static let emptyString = ""
     }
 
     // MARK: - Private Properties
@@ -23,6 +24,7 @@ final class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
         sortUsers()
+        setupNavigationController()
     }
 
     // MARK: - Public methods
@@ -56,14 +58,35 @@ final class FriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let user = getOneUser(indexPath: indexPath) else { return }
-        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.avatarImageName)
+        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.photosImageName)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,
-              let photosCollectionViewController = segue.destination as? PhotosCollectionViewController,
-              let imageName = sender as? String else { return }
-        photosCollectionViewController.imageName = imageName
+              let allPhotosViewController = segue.destination as? AllPhotosViewController,
+              let indexPath = tableView.indexPathForSelectedRow,
+              let photosImagesNames = getOneUser(indexPath: indexPath)?.photosImageName else { return }
+        allPhotosViewController.photosImagesNames = photosImagesNames
+    }
+
+    override func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        cell.transform = CGAffineTransform(translationX: cell.contentView.frame.width, y: 0)
+        UIView.animate(
+            withDuration: 0.9,
+            delay: 0.05 * Double(indexPath.row),
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 0.1,
+            options: .curveEaseIn
+        ) {
+            cell.transform = CGAffineTransform(
+                translationX: cell.contentView.frame.width,
+                y: cell.contentView.frame.height
+            )
+        }
     }
 
     // MARK: - Private Methods
@@ -97,5 +120,14 @@ final class FriendsTableViewController: UITableViewController {
         guard let users = sortedUsers[firstChar] else { return nil }
         let user = users[indexPath.row]
         return user
+    }
+
+    private func setupNavigationController() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: Constants.emptyString,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
     }
 }

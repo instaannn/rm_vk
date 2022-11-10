@@ -6,6 +6,7 @@ struct User {
     let avatarImageName: String
     let name: String
     let description: String?
+    let photosImageName: [String]?
 }
 
 /// Моки для друзей
@@ -15,122 +16,146 @@ struct Users {
             User(
                 avatarImageName: "avatarWFour",
                 name: "Лаврентьева Василиса",
-                description: "БГПУ им. М. Акмуллы (бывш. БашГПИ)"
+                description: "БГПУ им. М. Акмуллы (бывш. БашГПИ)",
+                photosImageName: ["avatarWFour", "avatarWOne", "avatarWThree", "avatarWFour", "avatarWOne", "avatarWThree"]
             ),
             User(
                 avatarImageName: "avatarWOne",
                 name: "Абрамова Виктория",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWThree",
                 name: "Соколова Варвара",
-                description: "МГУТУ (КФ)"
+                description: "МГУТУ (КФ)",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWTwo",
                 name: "Федосеева Татьяна",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMOne",
                 name: "Поляков Елисей",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMTwo",
                 name: "Прокофьев Максим",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWOne",
                 name: "Старостина Мария",
-                description: "РЭУ им. Г. В. Плеханова"
+                description: "РЭУ им. Г. В. Плеханова",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWThree",
                 name: "Галкина Антонина",
-                description: "РГУП (бывш. РАП)"
+                description: "РГУП (бывш. РАП)",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMTwo",
                 name: "Медведев Артём",
-                description: "Москва"
+                description: "Москва",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMOne",
                 name: "Смирнов Станислав",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWFour",
                 name: "Дмитриева Мария",
-                description: "РГУП (бывш. РАП)"
+                description: "РГУП (бывш. РАП)",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMTwo",
                 name: "Демин Кирилл",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMOne",
                 name: "Галкин Егор",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWOne",
                 name: "Егорова Диана",
-                description: "РЭУ им. Г. В. Плеханова"
+                description: "РЭУ им. Г. В. Плеханова",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWTwo",
                 name: "Попова Ева",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMOne",
                 name: "Романов Иван",
-                description: "МАИ"
+                description: "МАИ",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWThree",
                 name: "Селезнева Ульяна",
-                description: "РГУП (бывш. РАП)"
+                description: "РГУП (бывш. РАП)",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMTwo",
                 name: "Гришин Андрей",
-                description: "Волгоград"
+                description: "Волгоград",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWFour",
                 name: "Галкина Варвара",
-                description: "МАИ"
+                description: "МАИ",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMOne",
                 name: "Петровский Леонид",
-                description: "РЭУ им. Г. В. Плеханова"
+                description: "РЭУ им. Г. В. Плеханова",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarMTwo",
                 name: "Лопатин Захар",
-                description: "МАИ"
+                description: "МАИ",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWFour",
                 name: "Иванова Кира",
-                description: nil
+                description: nil,
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWThree",
                 name: "Корнеева Зоя",
-                description: "РГУП (бывш. РАП)"
+                description: "РГУП (бывш. РАП)",
+                photosImageName: ["avatarWFour"]
             ),
             User(
                 avatarImageName: "avatarWFour",
                 name: "Федорова Элина",
-                description: "МАИ"
+                description: "МАИ",
+                photosImageName: ["avatarWFour"]
             ),
         ]
     }
