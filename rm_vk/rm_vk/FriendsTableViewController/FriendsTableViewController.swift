@@ -58,14 +58,14 @@ final class FriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let user = getOneUser(indexPath: indexPath) else { return }
-        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.photosImageName)
+        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.photosImageNames)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,
               let allPhotosViewController = segue.destination as? AllPhotosViewController,
               let indexPath = tableView.indexPathForSelectedRow,
-              let photosImagesNames = getOneUser(indexPath: indexPath)?.photosImageName else { return }
+              let photosImagesNames = getOneUser(indexPath: indexPath)?.photosImageNames else { return }
         allPhotosViewController.photosImagesNames = photosImagesNames
     }
 

@@ -36,7 +36,7 @@ final class AllPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createSwipeGesture()
+        createSwipeGestures()
         setupNavigationController()
         setupFirstImageView()
         updateTitle()
@@ -45,25 +45,24 @@ final class AllPhotosViewController: UIViewController {
     // MARK: - Public methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.segueIdentifier {
-            guard let photosCollectionViewController = segue.destination as? PhotosCollectionViewController else { return }
-            photosCollectionViewController.photosImagesNames = photosImagesNames
-        }
+        guard segue.identifier == Constants.segueIdentifier,
+              let photosCollectionViewController = segue.destination as? PhotosCollectionViewController else { return }
+        photosCollectionViewController.photosImagesNames = photosImagesNames
     }
 
     // MARK: - Private Methods
 
-    private func createSwipeGesture() {
+    private func createSwipeGestures() {
         let swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-        swipeGestureRecognizerRight.direction = UISwipeGestureRecognizer.Direction.right
+        swipeGestureRecognizerRight.direction = .right
         view.addGestureRecognizer(swipeGestureRecognizerRight)
 
         let swipeGestureRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
-        swipeGestureRecognizerLeft.direction = UISwipeGestureRecognizer.Direction.left
+        swipeGestureRecognizerLeft.direction = .left
         view.addGestureRecognizer(swipeGestureRecognizerLeft)
     }
 
-    private func animationSwipePhotoImageView(translationX: Int, index: Int) {
+    private func animationSwipe(translationX: Int, index: Int) {
         currentIndex += index
         guard currentIndex < photoImages.count, currentIndex >= 0 else {
             currentIndex -= index
@@ -101,9 +100,9 @@ final class AllPhotosViewController: UIViewController {
         guard let swipeGestureRecognizer = sender as? UISwipeGestureRecognizer else { return }
         switch swipeGestureRecognizer.direction {
         case .right:
-            animationSwipePhotoImageView(translationX: 500, index: -1)
+            animationSwipe(translationX: 500, index: -1)
         case .left:
-            animationSwipePhotoImageView(translationX: -500, index: 1)
+            animationSwipe(translationX: -500, index: 1)
         default:
             break
         }

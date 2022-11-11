@@ -4,7 +4,7 @@
 import UIKit
 
 /// Кастомный навигейшн контроллер
-final class CustomNavigationController: UINavigationController, UINavigationControllerDelegate {
+final class CustomNavigationController: UINavigationController {
     // MARK: - Private Properties
 
     private let interactiveTransition = CustomInteractiveTransition()
@@ -13,11 +13,19 @@ final class CustomNavigationController: UINavigationController, UINavigationCont
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        setupNavigationController()
     }
 
-    // MARK: - Public methods
+    // MARK: - Private methods
 
+    private func setupNavigationController() {
+        delegate = self
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+
+extension CustomNavigationController: UINavigationControllerDelegate {
     func navigationController(
         _ navigationController: UINavigationController,
         interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
@@ -31,14 +39,17 @@ final class CustomNavigationController: UINavigationController, UINavigationCont
         from fromVC: UIViewController,
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .push {
+        switch operation {
+        case .push:
             interactiveTransition.viewController = toVC
             return CustomPushAnimator()
-        } else if operation == .pop {
-            if navigationController.viewControllers.first != toVC {
-                interactiveTransition.viewController = toVC
+        case .pop:
+            guard navigationController.viewControllers.first != toVC else {
+                return CustomPopAnimator()
             }
-            return CustomPopAnimator()
+            interactiveTransition.viewController = toVC
+        default:
+            break
         }
         return nil
     }
