@@ -5,6 +5,12 @@ import UIKit
 
 /// Анимация открытия экрана
 final class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    // MARK: - Constants
+
+    private enum Constants {
+        static let rotationAngle: CGFloat = 90
+    }
+
     // MARK: - Private property
 
     private let animationDuration: TimeInterval = 0.6
@@ -21,7 +27,7 @@ final class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 
         destination.view.layer.anchorPoint = CGPoint(x: 1.0, y: 0.0)
         destination.view.frame = source.view.frame
-        destination.view.transform = CGAffineTransform(rotationAngle: -90)
+        destination.view.transform = CGAffineTransform(rotationAngle: -Constants.rotationAngle)
         transitionContext.containerView.addSubview(destination.view)
 
         UIView.animateKeyframes(
@@ -34,7 +40,7 @@ final class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning 
                 relativeDuration: 0.5
             ) {
                 source.view.layer.anchorPoint = CGPoint(x: 1.0, y: 0.0)
-                let rotation = CGAffineTransform(rotationAngle: 90)
+                let rotation = CGAffineTransform(rotationAngle: Constants.rotationAngle)
                 source.view.transform = rotation
             }
             UIView.addKeyframe(

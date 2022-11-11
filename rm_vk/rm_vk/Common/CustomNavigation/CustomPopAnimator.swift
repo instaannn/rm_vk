@@ -5,6 +5,12 @@ import UIKit
 
 /// Анимация закрытия экрана
 final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    // MARK: - Constants
+
+    private enum Constants {
+        static let rotationAngle: CGFloat = 90
+    }
+
     // MARK: - Private property
 
     private let animationDuration: TimeInterval = 0.6
@@ -24,7 +30,7 @@ final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         source.view.layer.anchorPoint = CGPoint(x: 1.0, y: 0.0)
         destination.view.layer.anchorPoint = CGPoint(x: 1.0, y: 0.0)
         destination.view.frame = source.view.frame
-        let rotation = CGAffineTransform(rotationAngle: 90)
+        let rotation = CGAffineTransform(rotationAngle: Constants.rotationAngle)
         destination.view.transform = rotation
 
         UIView.animateKeyframes(
@@ -36,7 +42,7 @@ final class CustomPopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                     withRelativeStartTime: 0.0,
                     relativeDuration: 0.5,
                     animations: {
-                        let rotation = CGAffineTransform(rotationAngle: -90)
+                        let rotation = CGAffineTransform(rotationAngle: -Constants.rotationAngle)
                         source.view.transform = rotation
                     }
                 )

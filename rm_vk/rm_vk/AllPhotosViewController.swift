@@ -53,11 +53,11 @@ final class AllPhotosViewController: UIViewController {
     // MARK: - Private Methods
 
     private func createSwipeGestures() {
-        let swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        let swipeGestureRecognizerRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureAction))
         swipeGestureRecognizerRight.direction = .right
         view.addGestureRecognizer(swipeGestureRecognizerRight)
 
-        let swipeGestureRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeGesture))
+        let swipeGestureRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureAction))
         swipeGestureRecognizerLeft.direction = .left
         view.addGestureRecognizer(swipeGestureRecognizerLeft)
     }
@@ -96,7 +96,7 @@ final class AllPhotosViewController: UIViewController {
         photoImageView.image = photoImages[currentIndex]
     }
 
-    @objc private func swipeGesture(_ sender: UIGestureRecognizer) {
+    @objc private func swipeGestureAction(_ sender: UIGestureRecognizer) {
         guard let swipeGestureRecognizer = sender as? UISwipeGestureRecognizer else { return }
         switch swipeGestureRecognizer.direction {
         case .right:
