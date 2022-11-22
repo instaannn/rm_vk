@@ -9,6 +9,23 @@ final class NewsViewController: UIViewController {
 
     private enum Constants {
         static let cellIdentifier = "NewsTableViewCell"
+        static let searchQuery = "Music"
+    }
+
+    // MARK: - Private Properties
+
+    private let netWorkService = NetWorkService()
+
+    // MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        netWorkService.sendRequest(urlString: RequestType.groups.urlString)
+        netWorkService.sendRequest(urlString: RequestType.friends.urlString)
+        netWorkService.sendRequest(urlString: RequestType.photos(id: 1).urlString)
+        netWorkService.sendRequest(urlString: RequestType.searchGroups(
+            searchQuery: Constants.searchQuery
+        ).urlString)
     }
 }
 
