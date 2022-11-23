@@ -33,7 +33,7 @@ final class WebViewController: UIViewController {
         static let storyboardIdentifier = "MainTabBarController"
     }
 
-    // MARK: - IBOutlet
+    // MARK: - Private IBOutlet
 
     @IBOutlet private var webView: WKWebView! {
         didSet {
@@ -75,6 +75,15 @@ final class WebViewController: UIViewController {
         let request = URLRequest(url: url)
         webView.load(request)
     }
+    
+    private func goToMainTabBarController() {
+        let storyboard = UIStoryboard(name: Constants.uIStoryboardName, bundle: nil)
+        guard let mainTabBarController = storyboard.instantiateViewController(
+            withIdentifier: Constants.storyboardIdentifier
+        ) as? MainTabBarController else { return }
+        mainTabBarController.modalPresentationStyle = .fullScreen
+        present(mainTabBarController, animated: true)
+    }
 }
 
 // MARK: - WKNavigationDelegate
@@ -114,13 +123,8 @@ extension WebViewController: WKNavigationDelegate {
         Session.shared.token = token
         Session.shared.userId = userId
 
-        let storyboard = UIStoryboard(name: Constants.uIStoryboardName, bundle: nil)
-        guard let mainTabBarController = storyboard.instantiateViewController(
-            withIdentifier: Constants.storyboardIdentifier
-        ) as? MainTabBarController else { return }
-        mainTabBarController.modalPresentationStyle = .fullScreen
-        present(mainTabBarController, animated: true)
-
+        goToMainTabBarController()
+        
         decisionHandler(.cancel)
     }
 }
