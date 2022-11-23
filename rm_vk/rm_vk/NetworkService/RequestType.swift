@@ -11,14 +11,13 @@ enum RequestType {
     var urlString: String {
         switch self {
         case .friends:
-            return Api.baseUrl + "friends.get?" + Api.acessToken + Api.friendsFields + Api.version
+            return "\(NetworkPath.friends)\(Api.acessToken)\(Api.friendsFields)"
         case .groups:
-            return Api.baseUrl + "groups.get?" + Api.userId + Api.extended + Api.acessToken + Api.version
+            return "\(NetworkPath.groups)\(Api.userId)\(Api.extended)\(Api.acessToken)"
         case let .photos(id):
-            return Api.baseUrl + "photos.getAll" + Api.acessToken + Api.extended + "&owner_id=\(-id)" +
-            Api.version
+            return "\(NetworkPath.photos)\(Api.acessToken)\(Api.extended)&owner_id=\(-id)"
         case let .searchGroups(searchQuery):
-            return Api.baseUrl + "groups.search?" + Api.acessToken + "&q=\(searchQuery)" + Api.version
+            return "\(NetworkPath.groupsSearch)\(Api.acessToken)&q=\(searchQuery)"
         }
     }
 }

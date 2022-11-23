@@ -13,6 +13,7 @@
 		8548BCEA292D41FE00C49575 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BCE9292D41FE00C49575 /* NetworkService.swift */; };
 		8548BCEC292D438400C49575 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BCEB292D438400C49575 /* Api.swift */; };
 		8548BCEE292D83EA00C49575 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BCED292D83EA00C49575 /* RequestType.swift */; };
+		8548BCF0292E1C8C00C49575 /* NetworkPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BCEF292E1C8C00C49575 /* NetworkPath.swift */; };
 		854AEB412914476500F12FEA /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB402914476500F12FEA /* PhotosCollectionViewController.swift */; };
 		854AEB432914489100F12FEA /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB422914489100F12FEA /* PhotoCollectionViewCell.swift */; };
 		854AEB4629144DDB00F12FEA /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB4529144DDB00F12FEA /* MyGroupsTableViewController.swift */; };
@@ -53,6 +54,7 @@
 		8548BCE9292D41FE00C49575 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8548BCEB292D438400C49575 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		8548BCED292D83EA00C49575 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		8548BCEF292E1C8C00C49575 /* NetworkPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPath.swift; sourceTree = "<group>"; };
 		854AEB402914476500F12FEA /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		854AEB422914489100F12FEA /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		854AEB4529144DDB00F12FEA /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				8548BCE9292D41FE00C49575 /* NetworkService.swift */,
 				8548BCEB292D438400C49575 /* Api.swift */,
 				8548BCED292D83EA00C49575 /* RequestType.swift */,
+				8548BCEF292E1C8C00C49575 /* NetworkPath.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				8548BCE7292D27D700C49575 /* Session.swift in Sources */,
 				85D9598E291329A3001FA5DC /* Group.swift in Sources */,
 				8548BCE3292D0C4100C49575 /* WebViewController.swift in Sources */,
+				8548BCF0292E1C8C00C49575 /* NetworkPath.swift in Sources */,
 				854AEB502914682900F12FEA /* AllGroupTableViewCell.swift in Sources */,
 				855F20CC291B074900D0FC2B /* MainTabBarController.swift in Sources */,
 				85D959452910467D001FA5DC /* LoginViewController.swift in Sources */,

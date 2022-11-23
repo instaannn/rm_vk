@@ -20,6 +20,10 @@ final class NewsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
+    }
+
+    private func fetchData() {
         netWorkService.sendRequest(urlString: RequestType.groups.urlString)
         netWorkService.sendRequest(urlString: RequestType.friends.urlString)
         netWorkService.sendRequest(urlString: RequestType.photos(id: 1).urlString)

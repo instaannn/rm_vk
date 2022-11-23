@@ -9,7 +9,7 @@ final class NetWorkService {
     // MARK: - Public methods
 
     func sendRequest(urlString: String) {
-        AF.request(urlString).responseJSON { response in
+        AF.request("\(Api.baseUrl)\(urlString)\(Api.version)").responseJSON { response in
             guard let value = response.value else { return }
             print(value)
         }

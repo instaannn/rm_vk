@@ -75,7 +75,7 @@ final class WebViewController: UIViewController {
         let request = URLRequest(url: url)
         webView.load(request)
     }
-    
+
     private func goToMainTabBarController() {
         let storyboard = UIStoryboard(name: Constants.uIStoryboardName, bundle: nil)
         guard let mainTabBarController = storyboard.instantiateViewController(
@@ -124,7 +124,7 @@ extension WebViewController: WKNavigationDelegate {
         Session.shared.userId = userId
 
         goToMainTabBarController()
-        
+
         decisionHandler(.cancel)
     }
 }
