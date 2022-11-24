@@ -13,7 +13,7 @@ final class PhotosCollectionViewController: UICollectionViewController {
 
     // MARK: - Public Properties
 
-    var photosImagesNames: [String] = []
+    var photosImagesNames: [Photo] = []
 
     // MARK: - Public methods
 
@@ -29,7 +29,7 @@ final class PhotosCollectionViewController: UICollectionViewController {
             withReuseIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(imageName: photosImagesNames[indexPath.row])
+        cell.configure(photo: photosImagesNames[indexPath.row])
         return cell
     }
 }

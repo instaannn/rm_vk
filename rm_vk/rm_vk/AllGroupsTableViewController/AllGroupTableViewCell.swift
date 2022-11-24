@@ -29,8 +29,10 @@ final class AllGroupTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     func configureGroup(group: Group) {
-        avatarImageView.image = UIImage(named: group.avatarImageName)
-        nameLabel.text = group.title
+        guard let string = group.photoImageName,
+              let url = URL(string: string) else { return }
+        avatarImageView.load(url: url)
+        nameLabel.text = group.name
         descriptionLabel.text = group.description
     }
 

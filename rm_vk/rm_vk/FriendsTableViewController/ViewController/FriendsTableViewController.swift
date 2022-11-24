@@ -15,16 +15,17 @@ final class FriendsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private let users = Users.getUsers()
     private var sortedUsers = [Character: [User]]()
+    private var networkService: NetworkServiceProtocol = NetworkService()
+    private var users: [User] = []
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        sortUsers()
         setupNavigationController()
+        loadData()
     }
 
     // MARK: - Public methods
@@ -58,15 +59,15 @@ final class FriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let user = getOneUser(indexPath: indexPath) else { return }
-        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.photosImageNames)
+        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.id)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,
               let allPhotosViewController = segue.destination as? AllPhotosViewController,
               let indexPath = tableView.indexPathForSelectedRow,
-              let photosImagesNames = getOneUser(indexPath: indexPath)?.photosImageNames else { return }
-        allPhotosViewController.photosImagesNames = photosImagesNames
+              let id = getOneUser(indexPath: indexPath)?.id else { return }
+        allPhotosViewController.id = id
     }
 
     override func tableView(
@@ -105,7 +106,7 @@ final class FriendsTableViewController: UITableViewController {
     private func sort(users: [User]) -> [Character: [User]] {
         var sortedUsers = [Character: [User]]()
         users.forEach {
-            guard let firstLetter = $0.name.first else { return }
+            guard let firstLetter = $0.lastName.first else { return }
             guard var charUsers = sortedUsers[firstLetter] else { sortedUsers[firstLetter] = [$0]
                 return
             }
@@ -129,5 +130,19 @@ final class FriendsTableViewController: UITableViewController {
             target: nil,
             action: nil
         )
+    }
+
+    private func loadData() {
+        networkService.fetchFriends { [weak self] item in
+            guard let self = self else { return }
+            switch item {
+            case let .success(data):
+                self.users = data.users.users
+                self.sortUsers()
+                self.tableView.reloadData()
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }

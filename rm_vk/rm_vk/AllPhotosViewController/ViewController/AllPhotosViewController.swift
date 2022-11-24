@@ -18,13 +18,9 @@ final class AllPhotosViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var photosImagesNames: [String] = []
+    var id = 0
 
     // MARK: - Private Properties
-
-    private var photoImages: [UIImage] {
-        photosImagesNames.compactMap { UIImage(named: $0) }
-    }
 
     private var currentIndex = 0 {
         didSet {
@@ -32,21 +28,25 @@ final class AllPhotosViewController: UIViewController {
         }
     }
 
+    private var networkService: NetworkServiceProtocol = NetworkService()
+    private var photosImagesNames: [Photo] = []
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createSwipeGestures()
         setupNavigationController()
-        setupFirstImageView()
-        updateTitle()
+        loadData()
     }
 
     // MARK: - Public methods
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,
-              let photosCollectionViewController = segue.destination as? PhotosCollectionViewController else { return }
+              let photosCollectionViewController = segue.destination as? PhotosCollectionViewController
+        else { return
+        }
         photosCollectionViewController.photosImagesNames = photosImagesNames
     }
 
@@ -64,7 +64,7 @@ final class AllPhotosViewController: UIViewController {
 
     private func animationSwipe(translationX: Int, index: Int) {
         currentIndex += index
-        guard currentIndex < photoImages.count, currentIndex >= 0 else {
+        guard currentIndex < photosImagesNames.count, currentIndex >= 0 else {
             currentIndex -= index
             return
         }
@@ -75,7 +75,8 @@ final class AllPhotosViewController: UIViewController {
         } completion: { _ in
             self.photoImageView.layer.opacity = 1
             self.photoImageView.transform = .identity
-            self.photoImageView.image = self.photoImages[self.currentIndex]
+            guard let url = URL(string: self.photosImagesNames[self.currentIndex].urls.last?.url ?? "") else { return }
+            self.photoImageView.load(url: url)
         }
     }
 
@@ -89,11 +90,30 @@ final class AllPhotosViewController: UIViewController {
     }
 
     private func updateTitle() {
-        navigationItem.title = "\(currentIndex + 1) из \(photoImages.count)"
+        navigationItem.title = "\(currentIndex + 1) из \(photosImagesNames.count)"
     }
 
     private func setupFirstImageView() {
-        photoImageView.image = photoImages[currentIndex]
+        if !photosImagesNames.isEmpty {
+            guard let url = URL(string: photosImagesNames[currentIndex].urls.last?.url ?? "") else { return }
+            photoImageView.load(url: url)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+
+    private func loadData() {
+        networkService.fetchPhotos(for: String(id)) { [weak self] item in
+            guard let self = self else { return }
+            switch item {
+            case let .success(data):
+                self.photosImagesNames = data.photos.photos
+                self.setupFirstImageView()
+                self.updateTitle()
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 
     @objc private func swipeGestureAction(_ sender: UIGestureRecognizer) {
