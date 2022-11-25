@@ -4,6 +4,6 @@
 import RealmSwift
 
 /// Ссылка на фото
-class Url: Object, Decodable {
+final class Url: Object, Decodable {
     @objc dynamic var url: String
 }

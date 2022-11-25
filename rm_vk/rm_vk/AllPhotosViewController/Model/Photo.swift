@@ -2,7 +2,7 @@
 // Copyright © RoadMap. All rights reserved.
 
 /// Фото
-class Photo: Decodable {
+final class Photo: Decodable {
     let urls: [Url]
 
     private enum CodingKeys: String, CodingKey {

@@ -3,6 +3,7 @@
 
 import UIKit
 
+/// Расширение для загрузки фото по ссылке
 extension UIImageView {
     // MARK: - Public methods
 

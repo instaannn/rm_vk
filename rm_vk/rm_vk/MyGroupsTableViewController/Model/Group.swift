@@ -4,7 +4,7 @@
 import RealmSwift
 
 /// Группа
-class Group: Object, Decodable {
+final class Group: Object, Decodable {
     @objc dynamic var subtitle: String?
     @objc dynamic var name: String
     @objc dynamic var photoImageName: String?
