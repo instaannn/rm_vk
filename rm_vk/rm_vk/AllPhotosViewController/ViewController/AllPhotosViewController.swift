@@ -37,7 +37,7 @@ final class AllPhotosViewController: UIViewController {
         super.viewDidLoad()
         createSwipeGestures()
         setupNavigationController()
-        loadData()
+        fetchPhotos()
     }
 
     // MARK: - Public methods
@@ -102,7 +102,7 @@ final class AllPhotosViewController: UIViewController {
         }
     }
 
-    private func loadData() {
+    private func fetchPhotos() {
         networkService.fetchPhotos(for: String(id)) { [weak self] item in
             guard let self = self else { return }
             switch item {

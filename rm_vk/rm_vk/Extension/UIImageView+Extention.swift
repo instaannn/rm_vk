@@ -8,9 +8,8 @@ extension UIImageView {
     // MARK: - Public methods
 
     func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             guard
-                let self = self,
                 let data = try? Data(contentsOf: url),
                 let image = UIImage(data: data) else { return }
 

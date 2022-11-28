@@ -28,7 +28,7 @@ final class MainTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureUser(user: User) {
+    func configure(user: User) {
         guard let string = user.photoImageName,
               let url = URL(string: string) else { return }
         avatarImageView.load(url: url)
@@ -38,7 +38,7 @@ final class MainTableViewCell: UITableViewCell {
         }
     }
 
-    func configureGroup(group: Group) {
+    func configure(group: Group) {
         guard let string = group.photoImageName,
               let url = URL(string: string) else { return }
         avatarImageView.load(url: url)

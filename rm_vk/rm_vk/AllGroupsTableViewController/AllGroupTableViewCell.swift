@@ -28,7 +28,7 @@ final class AllGroupTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureGroup(group: Group) {
+    func configure(group: Group) {
         guard let string = group.photoImageName,
               let url = URL(string: string) else { return }
         avatarImageView.load(url: url)

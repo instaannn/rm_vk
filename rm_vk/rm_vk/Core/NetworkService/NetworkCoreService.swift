@@ -1,10 +1,10 @@
-// Core.swift
+// NetworkCoreService.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Alamofire
 
 /// Сетевые запросы
-final class Core {
+final class NetworkCoreService {
     // MARK: - Public methods
 
     func downloadJson<T: Decodable>(url: String, complition: @escaping (Result<T, Error>) -> Void) {

@@ -27,7 +27,7 @@ final class MyGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        loadData()
+        fetchGroups()
     }
 
     // MARK: - Public methods
@@ -41,7 +41,7 @@ final class MyGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(group: groups[indexPath.row])
+        cell.configure(group: groups[indexPath.row])
         return cell
     }
 
@@ -78,7 +78,7 @@ final class MyGroupsTableViewController: UITableViewController {
         )
     }
 
-    private func loadData() {
+    private func fetchGroups() {
         networkService.fetchGroups { [weak self] item in
             guard let self = self else { return }
             switch item {

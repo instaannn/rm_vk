@@ -39,7 +39,7 @@ final class AllGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? AllGroupTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(group: filterGroups[indexPath.row])
+        cell.configure(group: filterGroups[indexPath.row])
         return cell
     }
 

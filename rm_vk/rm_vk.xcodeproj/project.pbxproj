@@ -26,7 +26,7 @@
 		8548BD14292FED5F00C49575 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD13292FED5F00C49575 /* Photos.swift */; };
 		8548BD16292FEE9F00C49575 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD15292FEE9F00C49575 /* Photo.swift */; };
 		8548BD182930032F00C49575 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD172930032F00C49575 /* Url.swift */; };
-		8548BD1C29300A7D00C49575 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD1B29300A7D00C49575 /* Core.swift */; };
+		8548BD1C29300A7D00C49575 /* NetworkCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD1B29300A7D00C49575 /* NetworkCoreService.swift */; };
 		8548BD1E29300AEE00C49575 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548BD1D29300AEE00C49575 /* NetworkServiceProtocol.swift */; };
 		854AEB412914476500F12FEA /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB402914476500F12FEA /* PhotosCollectionViewController.swift */; };
 		854AEB432914489100F12FEA /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854AEB422914489100F12FEA /* PhotoCollectionViewCell.swift */; };
@@ -79,7 +79,7 @@
 		8548BD13292FED5F00C49575 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		8548BD15292FEE9F00C49575 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		8548BD172930032F00C49575 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
-		8548BD1B29300A7D00C49575 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		8548BD1B29300A7D00C49575 /* NetworkCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCoreService.swift; sourceTree = "<group>"; };
 		8548BD1D29300AEE00C49575 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		854AEB402914476500F12FEA /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		854AEB422914489100F12FEA /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8548BCE9292D41FE00C49575 /* NetworkService.swift */,
-				8548BD1B29300A7D00C49575 /* Core.swift */,
+				8548BD1B29300A7D00C49575 /* NetworkCoreService.swift */,
 				8548BD1D29300AEE00C49575 /* NetworkServiceProtocol.swift */,
 			);
 			path = NetworkService;
@@ -589,7 +589,7 @@
 				855F20C22919C81300D0FC2B /* NewsViewController.swift in Sources */,
 				855F20D6291D8A8100D0FC2B /* CustomPopAnimator.swift in Sources */,
 				855F20D4291D881500D0FC2B /* CustomPushAnimator.swift in Sources */,
-				8548BD1C29300A7D00C49575 /* Core.swift in Sources */,
+				8548BD1C29300A7D00C49575 /* NetworkCoreService.swift in Sources */,
 				8548BCEA292D41FE00C49575 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
