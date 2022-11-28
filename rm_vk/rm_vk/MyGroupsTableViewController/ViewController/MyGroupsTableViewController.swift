@@ -19,24 +19,15 @@ final class MyGroupsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private var groups = [
-        Group(
-            avatarImageName: Constants.oneGroupName,
-            title: Constants.oneGroupTitle,
-            description: Constants.oneGroupDescription
-        ),
-        Group(
-            avatarImageName: Constants.twoGroupName,
-            title: Constants.twoGroupTitle,
-            description: nil
-        )
-    ]
+    private var groups: [Group] = []
+    private var networkService: NetworkServiceProtocol = NetworkService()
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
+        fetchGroups()
     }
 
     // MARK: - Public methods
@@ -50,7 +41,7 @@ final class MyGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(group: groups[indexPath.row])
+        cell.configure(group: groups[indexPath.row])
         return cell
     }
 
@@ -71,7 +62,7 @@ final class MyGroupsTableViewController: UITableViewController {
               let allGroupsTableViewController = segue.source as? AllGroupsTableViewController,
               let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow,
               !groups.contains(
-                  where: { $0.title == allGroupsTableViewController.filterGroups[indexPath.row].title }
+                  where: { $0.name == allGroupsTableViewController.filterGroups[indexPath.row].name }
               ) else { return }
         let group = allGroupsTableViewController.filterGroups[indexPath.row]
         groups.append(group)
@@ -85,5 +76,18 @@ final class MyGroupsTableViewController: UITableViewController {
             UINib(nibName: Constants.cellIdentifier, bundle: nil),
             forCellReuseIdentifier: Constants.cellIdentifier
         )
+    }
+
+    private func fetchGroups() {
+        networkService.fetchGroups { [weak self] item in
+            guard let self = self else { return }
+            switch item {
+            case let .success(data):
+                self.groups = data.groups.groups
+                self.tableView.reloadData()
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }

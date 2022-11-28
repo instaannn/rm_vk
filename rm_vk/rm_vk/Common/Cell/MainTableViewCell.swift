@@ -28,15 +28,21 @@ final class MainTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configureUser(user: User) {
-        avatarImageView.image = UIImage(named: user.avatarImageName)
-        nameLabel.text = user.name
-        descriptionLabel.text = user.description
+    func configure(user: User) {
+        guard let string = user.photoImageName,
+              let url = URL(string: string) else { return }
+        avatarImageView.load(url: url)
+        nameLabel.text = "\(user.firstName) \(user.lastName)"
+        if let city = user.city {
+            descriptionLabel.text = city.title
+        }
     }
 
-    func configureGroup(group: Group) {
-        avatarImageView.image = UIImage(named: group.avatarImageName)
-        nameLabel.text = group.title
+    func configure(group: Group) {
+        guard let string = group.photoImageName,
+              let url = URL(string: string) else { return }
+        avatarImageView.load(url: url)
+        nameLabel.text = group.name
         descriptionLabel.text = group.description
     }
 

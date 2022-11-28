@@ -7,6 +7,6 @@ enum Api {
     static let acessToken = "?&access_token=\(Session.shared.token)"
     static let userId = "user_id=\(Session.shared.userId)"
     static let version = "&v=5.131"
-    static let friendsFields = "&fields=nickname"
+    static let friendsFields = "&fields=nickname,photo_100,city"
     static let extended = "&extended=1"
 }

@@ -17,8 +17,9 @@ final class AllGroupsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private(set) var groups = Groups.getGroups()
     private(set) var filterGroups: [Group] = []
+    private(set) var groups: [Group] = []
+    private var netWorkService: NetworkServiceProtocol = NetworkService()
 
     // MARK: - Lifecycle
 
@@ -38,7 +39,7 @@ final class AllGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? AllGroupTableViewCell else { return UITableViewCell() }
-        cell.configureGroup(group: filterGroups[indexPath.row])
+        cell.configure(group: filterGroups[indexPath.row])
         return cell
     }
 
@@ -58,8 +59,15 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             setupFilterGroups()
         } else {
-            for group in groups where group.title.lowercased().contains(searchText.lowercased()) {
-                filterGroups.append(group)
+            netWorkService.fetchSearchGroups(for: searchText) { [weak self] item in
+                guard let self = self else { return }
+                switch item {
+                case let .success(data):
+                    self.filterGroups = data.groups.groups
+                    self.tableView.reloadData()
+                case let .failure(error):
+                    print(error)
+                }
             }
         }
         tableView.reloadData()

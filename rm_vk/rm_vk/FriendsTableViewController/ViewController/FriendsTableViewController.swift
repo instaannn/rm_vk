@@ -15,36 +15,37 @@ final class FriendsTableViewController: UITableViewController {
 
     // MARK: - Private Properties
 
-    private let users = Users.getUsers()
-    private var sortedUsers = [Character: [User]]()
+    private var sortedUsersMap = [Character: [User]]()
+    private var networkService: NetworkServiceProtocol = NetworkService()
+    private var users: [User] = []
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        sortUsers()
         setupNavigationController()
+        fetchFriends()
     }
 
     // MARK: - Public methods
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        sortedUsers.keys.count
+        sortedUsersMap.keys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sortedUsersKeys = sortedUsers.keys.sorted()
-        let userCount = sortedUsers[sortedUsersKeys[section]]?.count ?? 0
+        let sortedUsersKeys = sortedUsersMap.keys.sorted()
+        let userCount = sortedUsersMap[sortedUsersKeys[section]]?.count ?? 0
         return userCount
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        sortedUsers.keys.sorted().map { String($0) }
+        sortedUsersMap.keys.sorted().map { String($0) }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        String(sortedUsers.keys.sorted()[section])
+        String(sortedUsersMap.keys.sorted()[section])
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,21 +53,21 @@ final class FriendsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
         guard let user = getOneUser(indexPath: indexPath) else { return UITableViewCell() }
-        cell.configureUser(user: user)
+        cell.configure(user: user)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let user = getOneUser(indexPath: indexPath) else { return }
-        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.photosImageNames)
+        performSegue(withIdentifier: Constants.segueIdentifier, sender: user.id)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == Constants.segueIdentifier,
               let allPhotosViewController = segue.destination as? AllPhotosViewController,
               let indexPath = tableView.indexPathForSelectedRow,
-              let photosImagesNames = getOneUser(indexPath: indexPath)?.photosImageNames else { return }
-        allPhotosViewController.photosImagesNames = photosImagesNames
+              let id = getOneUser(indexPath: indexPath)?.id else { return }
+        allPhotosViewController.id = id
     }
 
     override func tableView(
@@ -99,13 +100,13 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func sortUsers() {
-        sortedUsers = sort(users: users)
+        sortedUsersMap = sort(users: users)
     }
 
     private func sort(users: [User]) -> [Character: [User]] {
         var sortedUsers = [Character: [User]]()
         users.forEach {
-            guard let firstLetter = $0.name.first else { return }
+            guard let firstLetter = $0.lastName.first else { return }
             guard var charUsers = sortedUsers[firstLetter] else { sortedUsers[firstLetter] = [$0]
                 return
             }
@@ -116,8 +117,8 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func getOneUser(indexPath: IndexPath) -> User? {
-        let firstChar = sortedUsers.keys.sorted()[indexPath.section]
-        guard let users = sortedUsers[firstChar] else { return nil }
+        let firstChar = sortedUsersMap.keys.sorted()[indexPath.section]
+        guard let users = sortedUsersMap[firstChar] else { return nil }
         let user = users[indexPath.row]
         return user
     }
@@ -129,5 +130,19 @@ final class FriendsTableViewController: UITableViewController {
             target: nil,
             action: nil
         )
+    }
+
+    private func fetchFriends() {
+        networkService.fetchFriends { [weak self] item in
+            guard let self = self else { return }
+            switch item {
+            case let .success(data):
+                self.users = data.users.users
+                self.sortUsers()
+                self.tableView.reloadData()
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }

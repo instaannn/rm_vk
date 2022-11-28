@@ -14,23 +14,7 @@ final class NewsViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private let netWorkService = NetWorkService()
-
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        fetchData()
-    }
-
-    private func fetchData() {
-        netWorkService.sendRequest(urlString: RequestType.groups.urlString)
-        netWorkService.sendRequest(urlString: RequestType.friends.urlString)
-        netWorkService.sendRequest(urlString: RequestType.photos(id: 1).urlString)
-        netWorkService.sendRequest(urlString: RequestType.searchGroups(
-            searchQuery: Constants.searchQuery
-        ).urlString)
-    }
+    private let netWorkService: NetworkServiceProtocol = NetworkService()
 }
 
 // MARK: - UITableViewDataSource
