@@ -1,6 +1,7 @@
 // FriendsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import RealmSwift
 import UIKit
 
 /// Экран списка друзей
@@ -17,7 +18,9 @@ final class FriendsTableViewController: UITableViewController {
 
     private var sortedUsersMap = [Character: [User]]()
     private var networkService: NetworkServiceProtocol = NetworkService()
-    private var users: [User] = []
+    private let realm = try? Realm()
+    private var usersToken: NotificationToken?
+    private var users: Results<User>?
 
     // MARK: - Lifecycle
 
@@ -100,7 +103,8 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func sortUsers() {
-        sortedUsersMap = sort(users: users)
+        guard let users = users else { return }
+        sortedUsersMap = sort(users: Array(users))
     }
 
     private func sort(users: [User]) -> [Character: [User]] {
@@ -133,15 +137,31 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func fetchFriends() {
-        networkService.fetchFriends { [weak self] item in
-            guard let self = self else { return }
+        guard let objects = realm?.objects(User.self) else { return }
+        addUserToken(result: objects)
+        users = objects
+        sortUsers()
+        networkService.fetchFriends { item in
             switch item {
             case let .success(data):
-                self.users = data.users.users
-                self.sortUsers()
-                self.tableView.reloadData()
+                RealmService.save(items: data.users.users)
             case let .failure(error):
                 print(error)
+            }
+        }
+    }
+
+    private func addUserToken(result: Results<User>) {
+        usersToken = result.observe { change in
+            switch change {
+            case .initial:
+                break
+            case .update:
+                self.users = result
+                self.sortUsers()
+                self.tableView.reloadData()
+            case let .error(error):
+                print(error.localizedDescription)
             }
         }
     }

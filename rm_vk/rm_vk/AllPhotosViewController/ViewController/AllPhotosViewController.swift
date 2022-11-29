@@ -1,6 +1,7 @@
 // AllPhotosViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import RealmSwift
 import UIKit
 
 /// Анимация отображения всех фото друга
@@ -30,6 +31,7 @@ final class AllPhotosViewController: UIViewController {
 
     private var networkService: NetworkServiceProtocol = NetworkService()
     private var photosImagesNames: [Photo] = []
+    private let realm = try? Realm()
 
     // MARK: - Lifecycle
 
@@ -103,17 +105,28 @@ final class AllPhotosViewController: UIViewController {
     }
 
     private func fetchPhotos() {
-        networkService.fetchPhotos(for: String(id)) { [weak self] item in
-            guard let self = self else { return }
-            switch item {
-            case let .success(data):
-                self.photosImagesNames = data.photos.photos
-                self.setupFirstImageView()
-                self.updateTitle()
-            case let .failure(error):
-                print(error)
+        guard let objects = realm?.objects(Photo.self) else { return }
+        let userId = objects.map(\.ownerId)
+        if userId.contains(where: { $0 == -id }) {
+            updateUILoad(photos: objects.filter { $0.ownerId == -id })
+        } else {
+            networkService.fetchPhotos(for: String(id)) { [weak self] item in
+                guard let self = self else { return }
+                switch item {
+                case let .success(data):
+                    RealmService.save(items: data.photos.photos)
+                    self.updateUILoad(photos: data.photos.photos)
+                case let .failure(error):
+                    print(error)
+                }
             }
         }
+    }
+
+    private func updateUILoad(photos: [Photo]) {
+        photosImagesNames = photos
+        setupFirstImageView()
+        updateTitle()
     }
 
     @objc private func swipeGestureAction(_ sender: UIGestureRecognizer) {

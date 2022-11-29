@@ -194,9 +194,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="LNV-Vy-quI">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="yGM-gO-XKC">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="358-p0-pgB">
                             <connections>
-                                <segue destination="JrX-u5-D6e" kind="show" id="SMw-2c-eNc"/>
+                                <segue destination="JrX-u5-D6e" kind="show" identifier="" id="LVG-cS-yo5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
