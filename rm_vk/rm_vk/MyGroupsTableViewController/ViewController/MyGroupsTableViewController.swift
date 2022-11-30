@@ -65,8 +65,8 @@ final class MyGroupsTableViewController: UITableViewController {
     }
 
     private func fetchGroups() {
-        networkService.fetchGroups { item in
-            switch item {
+        networkService.fetchGroups { result in
+            switch result {
             case let .success(data):
                 RealmService.save(items: data.groups.groups)
             case let .failure(error):
@@ -76,7 +76,8 @@ final class MyGroupsTableViewController: UITableViewController {
     }
 
     private func addUserToken(result: Results<Group>) {
-        groupsToken = result.observe { change in
+        groupsToken = result.observe { [weak self] change in
+            guard let self = self else { return }
             switch change {
             case .initial:
                 break

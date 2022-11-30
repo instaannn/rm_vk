@@ -144,8 +144,8 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func fetchFriends() {
-        networkService.fetchFriends { item in
-            switch item {
+        networkService.fetchFriends { result in
+            switch result {
             case let .success(data):
                 RealmService.save(items: data.users.users)
             case let .failure(error):
@@ -155,7 +155,8 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func addUserToken(result: Results<User>) {
-        usersToken = result.observe { change in
+        usersToken = result.observe { [weak self] change in
+            guard let self = self else { return }
             switch change {
             case .initial:
                 break
