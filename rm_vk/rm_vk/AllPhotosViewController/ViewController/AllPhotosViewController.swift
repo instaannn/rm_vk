@@ -31,7 +31,6 @@ final class AllPhotosViewController: UIViewController {
 
     private var networkService: NetworkServiceProtocol = NetworkService()
     private var photosImagesNames: [Photo] = []
-    private let realm = try? Realm()
 
     // MARK: - Lifecycle
 
@@ -39,7 +38,7 @@ final class AllPhotosViewController: UIViewController {
         super.viewDidLoad()
         createSwipeGestures()
         setupNavigationController()
-        fetchPhotos()
+        getPhotos()
     }
 
     // MARK: - Public methods
@@ -104,21 +103,25 @@ final class AllPhotosViewController: UIViewController {
         }
     }
 
-    private func fetchPhotos() {
-        guard let objects = realm?.objects(Photo.self) else { return }
+    private func getPhotos() {
+        guard let objects = RealmService.get(Photo.self) else { return }
         let userId = objects.map(\.ownerId)
         if userId.contains(where: { $0 == -id }) {
             updateUILoad(photos: objects.filter { $0.ownerId == -id })
         } else {
-            networkService.fetchPhotos(for: String(id)) { [weak self] item in
-                guard let self = self else { return }
-                switch item {
-                case let .success(data):
-                    RealmService.save(items: data.photos.photos)
-                    self.updateUILoad(photos: data.photos.photos)
-                case let .failure(error):
-                    print(error)
-                }
+            fetchPhotos()
+        }
+    }
+
+    private func fetchPhotos() {
+        networkService.fetchPhotos(for: String(id)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(data):
+                RealmService.save(items: data.photos.photos)
+                self.updateUILoad(photos: data.photos.photos)
+            case let .failure(error):
+                print(error.localizedDescription)
             }
         }
     }

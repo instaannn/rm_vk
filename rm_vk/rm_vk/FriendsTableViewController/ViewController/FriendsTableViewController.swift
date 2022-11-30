@@ -18,7 +18,6 @@ final class FriendsTableViewController: UITableViewController {
 
     private var sortedUsersMap = [Character: [User]]()
     private var networkService: NetworkServiceProtocol = NetworkService()
-    private let realm = try? Realm()
     private var usersToken: NotificationToken?
     private var users: Results<User>?
 
@@ -28,7 +27,7 @@ final class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
         setupNavigationController()
-        fetchFriends()
+        getUser()
     }
 
     // MARK: - Public methods
@@ -136,17 +135,21 @@ final class FriendsTableViewController: UITableViewController {
         )
     }
 
-    private func fetchFriends() {
-        guard let objects = realm?.objects(User.self) else { return }
+    private func getUser() {
+        guard let objects = RealmService.get(User.self) else { return }
         addUserToken(result: objects)
         users = objects
         sortUsers()
+        fetchFriends()
+    }
+
+    private func fetchFriends() {
         networkService.fetchFriends { item in
             switch item {
             case let .success(data):
                 RealmService.save(items: data.users.users)
             case let .failure(error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }

@@ -21,7 +21,6 @@ final class MyGroupsTableViewController: UITableViewController {
     // MARK: - Private Properties
 
     private var networkService: NetworkServiceProtocol = NetworkService()
-    private let realm = try? Realm()
     private var groupsToken: NotificationToken?
     private var groups: Results<Group>?
 
@@ -30,7 +29,7 @@ final class MyGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
-        fetchGroups()
+        getGroups()
     }
 
     // MARK: - Public methods
@@ -58,16 +57,20 @@ final class MyGroupsTableViewController: UITableViewController {
         )
     }
 
-    private func fetchGroups() {
-        guard let objects = realm?.objects(Group.self) else { return }
+    private func getGroups() {
+        guard let objects = RealmService.get(Group.self) else { return }
         addUserToken(result: objects)
         groups = objects
+        fetchGroups()
+    }
+
+    private func fetchGroups() {
         networkService.fetchGroups { item in
             switch item {
             case let .success(data):
                 RealmService.save(items: data.groups.groups)
             case let .failure(error):
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }
