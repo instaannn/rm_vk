@@ -1,6 +1,7 @@
 // FriendsTableViewController.swift
 // Copyright © RoadMap. All rights reserved.
 
+import RealmSwift
 import UIKit
 
 /// Экран списка друзей
@@ -17,7 +18,8 @@ final class FriendsTableViewController: UITableViewController {
 
     private var sortedUsersMap = [Character: [User]]()
     private var networkService: NetworkServiceProtocol = NetworkService()
-    private var users: [User] = []
+    private var usersToken: NotificationToken?
+    private var users: Results<User>?
 
     // MARK: - Lifecycle
 
@@ -25,7 +27,7 @@ final class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
         setupNavigationController()
-        fetchFriends()
+        getUser()
     }
 
     // MARK: - Public methods
@@ -100,7 +102,8 @@ final class FriendsTableViewController: UITableViewController {
     }
 
     private func sortUsers() {
-        sortedUsersMap = sort(users: users)
+        guard let users = users else { return }
+        sortedUsersMap = sort(users: Array(users))
     }
 
     private func sort(users: [User]) -> [Character: [User]] {
@@ -132,16 +135,37 @@ final class FriendsTableViewController: UITableViewController {
         )
     }
 
+    private func getUser() {
+        guard let objects = RealmService.get(User.self) else { return }
+        addUserToken(result: objects)
+        users = objects
+        sortUsers()
+        fetchFriends()
+    }
+
     private func fetchFriends() {
-        networkService.fetchFriends { [weak self] item in
-            guard let self = self else { return }
-            switch item {
+        networkService.fetchFriends { result in
+            switch result {
             case let .success(data):
-                self.users = data.users.users
+                RealmService.save(items: data.users.users)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func addUserToken(result: Results<User>) {
+        usersToken = result.observe { [weak self] change in
+            guard let self = self else { return }
+            switch change {
+            case .initial:
+                break
+            case .update:
+                self.users = result
                 self.sortUsers()
                 self.tableView.reloadData()
-            case let .failure(error):
-                print(error)
+            case let .error(error):
+                print(error.localizedDescription)
             }
         }
     }

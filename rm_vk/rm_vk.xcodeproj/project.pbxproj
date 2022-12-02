@@ -47,6 +47,7 @@
 		855F20D6291D8A8100D0FC2B /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20D5291D8A8100D0FC2B /* CustomPopAnimator.swift */; };
 		855F20D8291D8C1600D0FC2B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20D7291D8C1600D0FC2B /* CustomNavigationController.swift */; };
 		855F20DA291D979E00D0FC2B /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20D9291D979E00D0FC2B /* CustomInteractiveTransition.swift */; };
+		8596C7A92935ED8300117053 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596C7A82935ED8300117053 /* RealmService.swift */; };
 		85D959412910467D001FA5DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959402910467D001FA5DC /* AppDelegate.swift */; };
 		85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959422910467D001FA5DC /* SceneDelegate.swift */; };
 		85D959452910467D001FA5DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959442910467D001FA5DC /* LoginViewController.swift */; };
@@ -100,6 +101,7 @@
 		855F20D5291D8A8100D0FC2B /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		855F20D7291D8C1600D0FC2B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		855F20D9291D979E00D0FC2B /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
+		8596C7A82935ED8300117053 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		85D9593D2910467D001FA5DC /* rm_vk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rm_vk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D959402910467D001FA5DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85D959422910467D001FA5DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		8548BD1929300A3100C49575 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				8596C7A72935ED6300117053 /* Realm */,
 				8548BD1A29300A4400C49575 /* Api */,
 				8548BCE8292D41AF00C49575 /* NetworkService */,
 			);
@@ -317,6 +320,14 @@
 				855F20D9291D979E00D0FC2B /* CustomInteractiveTransition.swift */,
 			);
 			path = CustomNavigation;
+			sourceTree = "<group>";
+		};
+		8596C7A72935ED6300117053 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				8596C7A82935ED8300117053 /* RealmService.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		85D959342910467D001FA5DC = {
@@ -551,6 +562,7 @@
 				8548BCE3292D0C4100C49575 /* WebViewController.swift in Sources */,
 				8548BCF0292E1C8C00C49575 /* NetworkPath.swift in Sources */,
 				854AEB502914682900F12FEA /* AllGroupTableViewCell.swift in Sources */,
+				8596C7A92935ED8300117053 /* RealmService.swift in Sources */,
 				855F20CC291B074900D0FC2B /* MainTabBarController.swift in Sources */,
 				8548BD0D292FAB6A00C49575 /* Group.swift in Sources */,
 				85D959452910467D001FA5DC /* LoginViewController.swift in Sources */,

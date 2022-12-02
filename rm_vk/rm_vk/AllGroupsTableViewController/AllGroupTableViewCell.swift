@@ -33,7 +33,7 @@ final class AllGroupTableViewCell: UITableViewCell {
               let url = URL(string: string) else { return }
         avatarImageView.load(url: url)
         nameLabel.text = group.name
-        descriptionLabel.text = group.description
+        descriptionLabel.text = group.subtitle
     }
 
     // MARK: - Private methods

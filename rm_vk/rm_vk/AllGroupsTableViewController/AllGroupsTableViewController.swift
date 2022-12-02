@@ -59,14 +59,14 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             setupFilterGroups()
         } else {
-            netWorkService.fetchSearchGroups(for: searchText) { [weak self] item in
+            netWorkService.fetchSearchGroups(for: searchText) { [weak self] result in
                 guard let self = self else { return }
-                switch item {
+                switch result {
                 case let .success(data):
                     self.filterGroups = data.groups.groups
                     self.tableView.reloadData()
                 case let .failure(error):
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
         }
