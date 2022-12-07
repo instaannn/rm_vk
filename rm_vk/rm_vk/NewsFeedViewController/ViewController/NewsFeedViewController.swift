@@ -20,8 +20,8 @@ final class NewsFeedViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var items: [CellType] = []
     private let networkService: NetworkServiceProtocol = NetworkService()
+    private var items: [CellType] = []
 
     // MARK: - Lifecycle
 

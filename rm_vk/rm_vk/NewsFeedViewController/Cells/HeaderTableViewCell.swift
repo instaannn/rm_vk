@@ -13,10 +13,10 @@ final class HeaderTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(news: HeaderItem) {
-        titleLabel.text = news.title
-        subtitleLabel.text = news.subtitle
-        guard let url = URL(string: news.avatarImageName) else { return }
+    func configure(headerItem: HeaderItem) {
+        titleLabel.text = headerItem.title
+        subtitleLabel.text = headerItem.subtitle
+        guard let url = URL(string: headerItem.avatarImageName) else { return }
         avatarImageView.load(url: url)
     }
 }
