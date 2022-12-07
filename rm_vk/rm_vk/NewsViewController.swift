@@ -11,10 +11,6 @@ final class NewsViewController: UIViewController {
         static let cellIdentifier = "NewsTableViewCell"
         static let searchQuery = "Music"
     }
-
-    // MARK: - Private Properties
-
-    private let netWorkService: NetworkServiceProtocol = NetworkService()
 }
 
 // MARK: - UITableViewDataSource

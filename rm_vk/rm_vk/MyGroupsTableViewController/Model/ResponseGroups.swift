@@ -3,6 +3,7 @@
 
 /// Ответ группы пользователя
 struct ResponseGroups: Decodable {
+    /// Группы пользователя
     let groups: Groups
 
     private enum CodingKeys: String, CodingKey {

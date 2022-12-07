@@ -9,4 +9,6 @@ enum Api {
     static let version = "&v=5.131"
     static let friendsFields = "&fields=nickname,photo_100,city"
     static let extended = "&extended=1"
+    static let groupFields = "&fields=description"
+    static let newsFiltre = "&filtres=post"
 }

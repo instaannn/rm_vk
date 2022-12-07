@@ -5,9 +5,13 @@ import RealmSwift
 
 /// Группа
 final class Group: Object, Decodable {
+    /// Описание групп
     @Persisted var subtitle: String?
+    /// Название группы
     @Persisted var name: String
+    /// Ссылка на аватарку
     @Persisted var photoImageName: String?
+    /// id группы
     @Persisted(primaryKey: true) var id = 0
 
     private enum CodingKeys: String, CodingKey {

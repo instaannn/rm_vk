@@ -3,9 +3,6 @@
 
 /// Фото
 struct Attachments: Decodable {
-    let photos: Photo?
-
-    private enum CodingKeys: String, CodingKey {
-        case photos = "photo"
-    }
+    /// Фото
+    let photo: Photo?
 }

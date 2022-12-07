@@ -3,5 +3,6 @@
 
 /// модель для PostTextTableViewCell
 struct PostItem {
+    /// Текст поста
     let text: String
 }

@@ -3,5 +3,6 @@
 
 /// Количество
 struct Count: Decodable {
+    /// Количество
     let count: Int
 }

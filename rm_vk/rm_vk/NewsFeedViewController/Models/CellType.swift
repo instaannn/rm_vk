@@ -1,7 +1,7 @@
 // CellType.swift
 // Copyright © RoadMap. All rights reserved.
 
-/// Типы ячеек
+/// Типы ячеек для NewsFeedViewController
 enum CellType {
     case header(item: HeaderItem)
     case post(item: PostItem)

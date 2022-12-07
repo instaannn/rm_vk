@@ -3,12 +3,17 @@
 
 import Foundation
 
-/// Новости
+/// Новость
 struct Items: Decodable {
+    /// дата новости
     let date: TimeInterval?
+    /// id владельца новости
     let sourceId: Int?
+    /// текст новости
     let text: String?
+    /// вложения к посту
     let attachments: [Attachments]?
+    /// количество просмотров
     let views: Count?
 
     private enum CodingKeys: String, CodingKey {

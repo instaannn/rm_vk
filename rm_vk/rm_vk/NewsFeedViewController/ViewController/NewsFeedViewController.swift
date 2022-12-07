@@ -20,7 +20,7 @@ final class NewsFeedViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private let networkService: NetworkServiceProtocol = NetworkService()
+    private let networkService = NetworkService()
     private var items: [CellType] = []
 
     // MARK: - Lifecycle
@@ -33,7 +33,8 @@ final class NewsFeedViewController: UIViewController {
     // MARK: - Private Methods
 
     private func fetchNews() {
-        networkService.fetchNews { result in
+        networkService.fetchNews { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case let .success(data):
                 self.generateItems(data: data)
@@ -47,38 +48,15 @@ final class NewsFeedViewController: UIViewController {
         data.newsFeed.items.forEach { item in
             if item.text != nil {
                 let date = Date(timeIntervalSince1970: item.date ?? 0)
-                guard let dateString = DateFormatter.bigDateFormatter
-                    .string(for: date) else { return }
+                guard let dateString = DateFormatter.bigDateFormatter.string(for: date) else { return }
                 if item.sourceId ?? 0 < 0 {
-                    guard let group = data.newsFeed.groups.filter({ group in
-                        group.id == (item.sourceId ?? 0) * -1
-                    }).first else { return }
-                    self.items.append(
-                        CellType.header(
-                            item: HeaderItem(
-                                title: group.name,
-                                subtitle: dateString,
-                                avatarImageName: group.photoImageName ?? ""
-                            )
-                        )
-                    )
+                    filtreGroup(data: data, item: item, dateString: dateString)
                 } else {
-                    guard let friend = data.newsFeed.users.filter({ friends in
-                        friends.id == item.sourceId
-                    }).first else { return }
-                    self.items.append(
-                        CellType.header(
-                            item: HeaderItem(
-                                title: "\(friend.firstName) \(friend.lastName)",
-                                subtitle: dateString,
-                                avatarImageName: friend.photoImageName ?? ""
-                            )
-                        )
-                    )
+                    filtreFriend(data: data, item: item, dateString: dateString)
                 }
                 self.items.append(.post(item: PostItem(text: item.text ?? "")))
                 if item.attachments != nil {
-                    self.items.append(.photoPost(item: item.attachments?.first?.photos?.urls.last?.url ?? ""))
+                    self.items.append(.photoPost(item: item.attachments?.first?.photo?.urls.last?.url ?? ""))
                 }
                 self.items.append(.footer(item: item.views?.count ?? 0))
             }
@@ -86,6 +64,36 @@ final class NewsFeedViewController: UIViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+
+    private func filtreGroup(data: ResponseNews, item: Items, dateString: String) {
+        guard let group = data.newsFeed.groups.filter({ group in
+            group.id == (item.sourceId ?? 0) * -1
+        }).first else { return }
+        items.append(
+            .header(
+                item: HeaderItem(
+                    title: group.name,
+                    subtitle: dateString,
+                    avatarImageName: group.photoImageName ?? ""
+                )
+            )
+        )
+    }
+
+    private func filtreFriend(data: ResponseNews, item: Items, dateString: String) {
+        guard let friend = data.newsFeed.users.filter({ friends in
+            friends.id == item.sourceId
+        }).first else { return }
+        items.append(
+            .header(
+                item: HeaderItem(
+                    title: "\(friend.firstName) \(friend.lastName)",
+                    subtitle: dateString,
+                    avatarImageName: friend.photoImageName ?? ""
+                )
+            )
+        )
     }
 }
 
@@ -103,13 +111,13 @@ extension NewsFeedViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.headerTableViewCellIdentifier, for: indexPath
             ) as? HeaderTableViewCell else { return UITableViewCell() }
-            cell.configure(news: item)
+            cell.configure(headerItem: item)
             return cell
         case let .post(item):
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.postTextTableViewCellIdentifier, for: indexPath
             ) as? PostTextTableViewCell else { return UITableViewCell() }
-            cell.configure(news: item)
+            cell.configure(postItem: item)
             return cell
         case let .photoPost(item):
             guard let cell = tableView.dequeueReusableCell(

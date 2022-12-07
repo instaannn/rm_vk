@@ -3,8 +3,11 @@
 
 /// Новости
 struct NewsFeed: Decodable {
+    /// Список новостей
     let items: [Items]
+    /// Список пользователей с новостями
     let users: [User]
+    /// Список групп с новостями
     let groups: [Group]
 
     private enum CodingKeys: String, CodingKey {

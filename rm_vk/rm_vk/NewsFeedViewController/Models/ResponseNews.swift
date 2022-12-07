@@ -3,6 +3,7 @@
 
 /// Ответ все новости
 struct ResponseNews: Decodable {
+    /// Лента новостей
     let newsFeed: NewsFeed
 
     private enum CodingKeys: String, CodingKey {
