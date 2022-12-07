@@ -7,4 +7,5 @@ protocol NetworkServiceProtocol {
     func fetchGroups(complition: @escaping (Result<ResponseGroups, Error>) -> Void)
     func fetchPhotos(for id: String, complition: @escaping (Result<ResponsePhotos, Error>) -> Void)
     func fetchSearchGroups(for searchText: String, complition: @escaping (Result<ResponseGroups, Error>) -> Void)
+    func fetchNews(complition: @escaping (Result<ResponseNews, Error>) -> Void)
 }

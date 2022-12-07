@@ -7,6 +7,7 @@ enum RequestType {
     case groups
     case photos(id: String)
     case searchGroups(searchQuery: String)
+    case news
 
     var urlString: String {
         switch self {
@@ -18,6 +19,8 @@ enum RequestType {
             return "\(NetworkPath.photos)\(Api.acessToken)\(Api.extended)&owner_id=-\(id)"
         case let .searchGroups(searchQuery):
             return "\(NetworkPath.groupsSearch)\(Api.acessToken)&q=\(searchQuery)"
+        case .news:
+            return "\(NetworkPath.news)\(Api.acessToken)&filtres=post"
         }
     }
 }

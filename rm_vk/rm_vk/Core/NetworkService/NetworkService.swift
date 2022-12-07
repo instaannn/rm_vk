@@ -30,4 +30,8 @@ final class NetworkService: NetworkServiceProtocol {
             complition: complition
         )
     }
+
+    func fetchNews(complition: @escaping (Result<ResponseNews, Error>) -> Void) {
+        networkCoreService.downloadJson(url: RequestType.news.urlString, complition: complition)
+    }
 }

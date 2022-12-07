@@ -7,4 +7,5 @@ enum NetworkPath {
     static let groups = "groups.get?"
     static let photos = "photos.getAll"
     static let groupsSearch = "groups.search?"
+    static let news = "newsfeed.get"
 }
