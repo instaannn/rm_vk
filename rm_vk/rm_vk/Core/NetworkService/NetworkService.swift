@@ -12,22 +12,26 @@ final class NetworkService: NetworkServiceProtocol {
 
     // MARK: - Public methods
 
-    func fetchFriends(complition: @escaping (Result<ResponseUsers, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.friends.urlString, complition: complition)
+    func fetchFriends(completion: @escaping (Result<ResponseUsers, Error>) -> Void) {
+        networkCoreService.downloadJson(url: RequestType.friends.urlString, completion: completion)
     }
 
-    func fetchGroups(complition: @escaping (Result<ResponseGroups, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.groups.urlString, complition: complition)
+    func fetchGroups(completion: @escaping (Result<ResponseGroups, Error>) -> Void) {
+        networkCoreService.downloadJson(url: RequestType.groups.urlString, completion: completion)
     }
 
-    func fetchPhotos(for id: String, complition: @escaping (Result<ResponsePhotos, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.photos(id: id).urlString, complition: complition)
+    func fetchPhotos(for id: String, completion: @escaping (Result<ResponsePhotos, Error>) -> Void) {
+        networkCoreService.downloadJson(url: RequestType.photos(id: id).urlString, completion: completion)
     }
 
-    func fetchSearchGroups(for searchText: String, complition: @escaping (Result<ResponseGroups, Error>) -> Void) {
+    func fetchSearchGroups(for searchText: String, completion: @escaping (Result<ResponseGroups, Error>) -> Void) {
         networkCoreService.downloadJson(
             url: RequestType.searchGroups(searchQuery: searchText).urlString,
-            complition: complition
+            completion: completion
         )
+    }
+
+    func fetchNews(completion: @escaping (Result<ResponseNews, Error>) -> Void) {
+        networkCoreService.downloadJson(url: RequestType.news.urlString, completion: completion)
     }
 }

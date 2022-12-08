@@ -7,14 +7,14 @@ import Alamofire
 final class NetworkCoreService {
     // MARK: - Public methods
 
-    func downloadJson<T: Decodable>(url: String, complition: @escaping (Result<T, Error>) -> Void) {
+    func downloadJson<T: Decodable>(url: String, completion: @escaping (Result<T, Error>) -> Void) {
         AF.request("\(Api.baseUrl)\(url)\(Api.version)").responseJSON { response in
             guard let data = response.data else { return }
             do {
                 let object = try JSONDecoder().decode(T.self, from: data)
-                complition(.success(object))
+                completion(.success(object))
             } catch {
-                complition(.failure(error))
+                completion(.failure(error))
             }
         }
     }

@@ -3,6 +3,7 @@
 
 /// Список групп
 struct Groups: Decodable {
+    /// Список групп
     let groups: [Group]
 
     private enum CodingKeys: String, CodingKey {

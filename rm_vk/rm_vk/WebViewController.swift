@@ -19,7 +19,7 @@ final class WebViewController: UIViewController {
         static let uRLQueryItemRedirectUriName = "redirect_uri"
         static let uRLQueryItemRedirectUriValue = "https://oauth.vk.com/blank.html"
         static let uRLQueryItemScopeName = "scope"
-        static let uRLQueryItemScopeValue = "friends, photos"
+        static let uRLQueryItemScopeValue = "friends, photos, wall"
         static let uRLQueryItemResponseTypeName = "response_type"
         static let uRLQueryItemResponseTypeValue = "token"
         static let uRLQueryItemVName = "v"

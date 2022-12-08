@@ -5,5 +5,6 @@ import RealmSwift
 
 /// Город
 final class City: Object, Decodable {
+    /// Название города
     @objc dynamic var title: String
 }
