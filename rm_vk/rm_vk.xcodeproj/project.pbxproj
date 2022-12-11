@@ -48,6 +48,10 @@
 		855F20D8291D8C1600D0FC2B /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20D7291D8C1600D0FC2B /* CustomNavigationController.swift */; };
 		855F20DA291D979E00D0FC2B /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855F20D9291D979E00D0FC2B /* CustomInteractiveTransition.swift */; };
 		8596C7A92935ED8300117053 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596C7A82935ED8300117053 /* RealmService.swift */; };
+		85BC553A29425E1C007D3569 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC553929425E1C007D3569 /* AsyncOperation.swift */; };
+		85BC553C29425FAF007D3569 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC553B29425FAF007D3569 /* GetDataOperation.swift */; };
+		85BC553E29426081007D3569 /* ParseDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC553D29426081007D3569 /* ParseDataOperation.swift */; };
+		85BC55402942622C007D3569 /* SaveToRealmOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC553F2942622C007D3569 /* SaveToRealmOperation.swift */; };
 		85D88BD1293FBAF90096C6A8 /* ResponseNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BD0293FBAF90096C6A8 /* ResponseNews.swift */; };
 		85D88BD3293FBB340096C6A8 /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BD2293FBB340096C6A8 /* NewsFeed.swift */; };
 		85D88BD5293FBBE90096C6A8 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BD4293FBBE90096C6A8 /* Items.swift */; };
@@ -71,6 +75,7 @@
 		85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959772911AFAE001FA5DC /* UITextField+Extension.swift */; };
 		85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959792911B00C001FA5DC /* UIViewController+Extension.swift */; };
 		85D9599029132D6C001FA5DC /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D9598F29132D6C001FA5DC /* FriendsTableViewController.swift */; };
+		85FBA73229428F950049931A /* PromiseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBA73129428F950049931A /* PromiseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +121,10 @@
 		855F20D7291D8C1600D0FC2B /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		855F20D9291D979E00D0FC2B /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		8596C7A82935ED8300117053 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		85BC553929425E1C007D3569 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		85BC553B29425FAF007D3569 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		85BC553D29426081007D3569 /* ParseDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseDataOperation.swift; sourceTree = "<group>"; };
+		85BC553F2942622C007D3569 /* SaveToRealmOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToRealmOperation.swift; sourceTree = "<group>"; };
 		85D88BD0293FBAF90096C6A8 /* ResponseNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNews.swift; sourceTree = "<group>"; };
 		85D88BD2293FBB340096C6A8 /* NewsFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
 		85D88BD4293FBBE90096C6A8 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
@@ -141,6 +150,7 @@
 		85D959772911AFAE001FA5DC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		85D959792911B00C001FA5DC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		85D9598F29132D6C001FA5DC /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		85FBA73129428F950049931A /* PromiseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseService.swift; sourceTree = "<group>"; };
 		8FE7478E6F2D93E627BE3174 /* Pods_rm_vk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rm_vk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,6 +193,8 @@
 		8548BCE8292D41AF00C49575 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				85FBA73029428F780049931A /* Promise */,
+				85BC553829425E07007D3569 /* Operation */,
 				8548BCE9292D41FE00C49575 /* NetworkService.swift */,
 				8548BD1B29300A7D00C49575 /* NetworkCoreService.swift */,
 				8548BD1D29300AEE00C49575 /* NetworkServiceProtocol.swift */,
@@ -358,6 +370,17 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		85BC553829425E07007D3569 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				85BC553929425E1C007D3569 /* AsyncOperation.swift */,
+				85BC553B29425FAF007D3569 /* GetDataOperation.swift */,
+				85BC553D29426081007D3569 /* ParseDataOperation.swift */,
+				85BC553F2942622C007D3569 /* SaveToRealmOperation.swift */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
 		85D88BCE293FBA920096C6A8 /* NewsFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +490,14 @@
 				855F20C52919CEFA00D0FC2B /* News.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		85FBA73029428F780049931A /* Promise */ = {
+			isa = PBXGroup;
+			children = (
+				85FBA73129428F950049931A /* PromiseService.swift */,
+			);
+			path = Promise;
 			sourceTree = "<group>";
 		};
 		B6AAD47C9FB814FD12B0BEA0 /* Pods */ = {
@@ -663,6 +694,8 @@
 				85D88BE1293FD31E0096C6A8 /* HeaderItem.swift in Sources */,
 				855F20C62919CEFA00D0FC2B /* News.swift in Sources */,
 				85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */,
+				85FBA73229428F950049931A /* PromiseService.swift in Sources */,
+				85BC553E29426081007D3569 /* ParseDataOperation.swift in Sources */,
 				85D88BDB293FCEDC0096C6A8 /* HeaderTableViewCell.swift in Sources */,
 				855F20D0291B1D1500D0FC2B /* UIView+Extension.swift in Sources */,
 				8548BCEC292D438400C49575 /* Api.swift in Sources */,
@@ -677,12 +710,14 @@
 				8548BD01292FA13600C49575 /* City.swift in Sources */,
 				8548BD05292FA72000C49575 /* Users.swift in Sources */,
 				85D88BD3293FBB340096C6A8 /* NewsFeed.swift in Sources */,
+				85BC55402942622C007D3569 /* SaveToRealmOperation.swift in Sources */,
 				855F20DA291D979E00D0FC2B /* CustomInteractiveTransition.swift in Sources */,
 				85D959432910467D001FA5DC /* SceneDelegate.swift in Sources */,
 				855F20CA291ADF8C00D0FC2B /* DotsLoadingView.swift in Sources */,
 				85D88BDF293FD2EC0096C6A8 /* CellType.swift in Sources */,
 				85D88BD5293FBBE90096C6A8 /* Items.swift in Sources */,
 				85D88BD1293FBAF90096C6A8 /* ResponseNews.swift in Sources */,
+				85BC553C29425FAF007D3569 /* GetDataOperation.swift in Sources */,
 				85D88BFF294015B20096C6A8 /* DateFormatter+Extension.swift in Sources */,
 				8548BD182930032F00C49575 /* Url.swift in Sources */,
 				855F20C22919C81300D0FC2B /* NewsViewController.swift in Sources */,
@@ -690,6 +725,7 @@
 				855F20D4291D881500D0FC2B /* CustomPushAnimator.swift in Sources */,
 				8548BD1C29300A7D00C49575 /* NetworkCoreService.swift in Sources */,
 				85D88BFD294003520096C6A8 /* PostPhotoTableViewCell.swift in Sources */,
+				85BC553A29425E1C007D3569 /* AsyncOperation.swift in Sources */,
 				8548BCEA292D41FE00C49575 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

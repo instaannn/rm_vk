@@ -12,14 +12,6 @@ final class NetworkService: NetworkServiceProtocol {
 
     // MARK: - Public methods
 
-    func fetchFriends(completion: @escaping (Result<ResponseUsers, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.friends.urlString, completion: completion)
-    }
-
-    func fetchGroups(completion: @escaping (Result<ResponseGroups, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.groups.urlString, completion: completion)
-    }
-
     func fetchPhotos(for id: String, completion: @escaping (Result<ResponsePhotos, Error>) -> Void) {
         networkCoreService.downloadJson(url: RequestType.photos(id: id).urlString, completion: completion)
     }
@@ -33,5 +25,9 @@ final class NetworkService: NetworkServiceProtocol {
 
     func fetchNews(completion: @escaping (Result<ResponseNews, Error>) -> Void) {
         networkCoreService.downloadJson(url: RequestType.news.urlString, completion: completion)
+    }
+
+    func fetchGroups() {
+        networkCoreService.fetchGroups(urlString: RequestType.groups.urlString)
     }
 }

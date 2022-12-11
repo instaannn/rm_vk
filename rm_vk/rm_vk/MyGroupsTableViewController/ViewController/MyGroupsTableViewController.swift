@@ -61,18 +61,7 @@ final class MyGroupsTableViewController: UITableViewController {
         guard let objects = RealmService.get(Group.self) else { return }
         addUserToken(result: objects)
         groups = objects
-        fetchGroups()
-    }
-
-    private func fetchGroups() {
-        networkService.fetchGroups { result in
-            switch result {
-            case let .success(data):
-                RealmService.save(items: data.groups.groups)
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+        networkService.fetchGroups()
     }
 
     private func addUserToken(result: Results<Group>) {

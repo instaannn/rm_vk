@@ -18,4 +18,22 @@ final class NetworkCoreService {
             }
         }
     }
+
+    func sendRequest(urlString: String) -> DataRequest {
+        let request = AF.request("\(Api.baseUrl)\(urlString)\(Api.version)")
+        return request
+    }
+
+    func fetchGroups(urlString: String) {
+        let opq = OperationQueue()
+        let request = sendRequest(urlString: urlString)
+        let getDataOperation = GetDataOperation(request: request)
+        opq.addOperation(getDataOperation)
+        let parseDataOperation = ParseDataOperation()
+        parseDataOperation.addDependency(getDataOperation)
+        opq.addOperation(parseDataOperation)
+        let saveToRealmOperation = SaveToRealmOperation()
+        saveToRealmOperation.addDependency(parseDataOperation)
+        opq.addOperation(saveToRealmOperation)
+    }
 }
