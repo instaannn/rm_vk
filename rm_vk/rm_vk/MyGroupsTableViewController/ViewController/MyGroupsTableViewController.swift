@@ -16,6 +16,7 @@ final class MyGroupsTableViewController: UITableViewController {
         static let twoGroupTitle = "Blue Hair"
         static let oneGroupDescription = "клуб любителей гомера"
         static let segueIdentifier = "addGroup"
+        static let emptyString = ""
     }
 
     // MARK: - Private Properties
@@ -23,6 +24,7 @@ final class MyGroupsTableViewController: UITableViewController {
     private var networkService: NetworkServiceProtocol = NetworkService()
     private var groupsToken: NotificationToken?
     private var groups: Results<Group>?
+    private var photoCacheService: PhotoCacheService?
 
     // MARK: - Lifecycle
 
@@ -30,6 +32,7 @@ final class MyGroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         registerCell()
         getGroups()
+        photoCacheService = PhotoCacheService(container: self)
     }
 
     // MARK: - Public methods
@@ -43,8 +46,12 @@ final class MyGroupsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier,
             for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        guard let group = groups?[indexPath.row] else { return UITableViewCell() }
-        cell.configure(group: group)
+        guard let group = groups?[indexPath.row],
+              let avatarImage = photoCacheService?.photo(
+                  atIndexpath: indexPath,
+                  byUrl: group.photoImageName ?? Constants.emptyString
+              ) else { return UITableViewCell() }
+        cell.configure(group: group, image: avatarImage)
         return cell
     }
 

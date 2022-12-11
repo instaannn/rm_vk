@@ -22,6 +22,7 @@ final class FriendsTableViewController: UITableViewController {
     private var usersToken: NotificationToken?
     private var users: Results<User>?
     private var promiseService = PromiseService()
+    private var photoCacheService: PhotoCacheService?
 
     // MARK: - Lifecycle
 
@@ -30,6 +31,7 @@ final class FriendsTableViewController: UITableViewController {
         registerCell()
         setupNavigationController()
         getUser()
+        photoCacheService = PhotoCacheService(container: self)
     }
 
     // MARK: - Public methods
@@ -56,8 +58,12 @@ final class FriendsTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
-        guard let user = getOneUser(indexPath: indexPath) else { return UITableViewCell() }
-        cell.configure(user: user)
+        guard let user = getOneUser(indexPath: indexPath),
+              let avatarImage = photoCacheService?.photo(
+                  atIndexpath: indexPath,
+                  byUrl: user.photoImageName ?? Constants.emptyString
+              ) else { return UITableViewCell() }
+        cell.configure(user: user, image: avatarImage)
         return cell
     }
 
