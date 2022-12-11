@@ -3,7 +3,7 @@
 
 import Foundation
 
-/// Универсальный класс для всех сетевых запросов
+/// Универсальный класс для асинхронных операций
 class AsyncOperation: Operation {
     // MARK: - Types
 

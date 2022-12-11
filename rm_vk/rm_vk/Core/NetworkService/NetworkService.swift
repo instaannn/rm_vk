@@ -28,6 +28,6 @@ final class NetworkService: NetworkServiceProtocol {
     }
 
     func fetchGroups() {
-        networkCoreService.getGroups(urlString: RequestType.groups.urlString)
+        networkCoreService.fetchGroups(urlString: RequestType.groups.urlString)
     }
 }
