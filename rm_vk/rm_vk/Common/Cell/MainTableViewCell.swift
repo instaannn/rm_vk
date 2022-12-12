@@ -28,16 +28,16 @@ final class MainTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(user: User, image: UIImage) {
-        avatarImageView.image = image
+    func configure(user: User, photoCacheService: PhotoCacheService) {
+        avatarImageView.image = photoCacheService.photo(byUrl: user.photoImageName ?? "")
         nameLabel.text = "\(user.firstName) \(user.lastName)"
         if let city = user.city {
             descriptionLabel.text = city.title
         }
     }
 
-    func configure(group: Group, image: UIImage) {
-        avatarImageView.image = image
+    func configure(group: Group, photoCacheService: PhotoCacheService) {
+        avatarImageView.image = photoCacheService.photo(byUrl: group.photoImageName ?? "")
         nameLabel.text = group.name
         descriptionLabel.text = group.subtitle
     }

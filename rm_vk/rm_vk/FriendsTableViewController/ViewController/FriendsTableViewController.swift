@@ -59,11 +59,8 @@ final class FriendsTableViewController: UITableViewController {
             withIdentifier: Constants.cellIdentifier, for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
         guard let user = getOneUser(indexPath: indexPath),
-              let avatarImage = photoCacheService?.photo(
-                  atIndexpath: indexPath,
-                  byUrl: user.photoImageName ?? Constants.emptyString
-              ) else { return UITableViewCell() }
-        cell.configure(user: user, image: avatarImage)
+              let photoCacheService = photoCacheService else { return UITableViewCell() }
+        cell.configure(user: user, photoCacheService: photoCacheService)
         return cell
     }
 

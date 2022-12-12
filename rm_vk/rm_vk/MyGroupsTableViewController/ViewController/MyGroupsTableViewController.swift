@@ -47,11 +47,8 @@ final class MyGroupsTableViewController: UITableViewController {
             for: indexPath
         ) as? MainTableViewCell else { return UITableViewCell() }
         guard let group = groups?[indexPath.row],
-              let avatarImage = photoCacheService?.photo(
-                  atIndexpath: indexPath,
-                  byUrl: group.photoImageName ?? Constants.emptyString
-              ) else { return UITableViewCell() }
-        cell.configure(group: group, image: avatarImage)
+              let photoCacheService = photoCacheService else { return UITableViewCell() }
+        cell.configure(group: group, photoCacheService: photoCacheService)
         return cell
     }
 

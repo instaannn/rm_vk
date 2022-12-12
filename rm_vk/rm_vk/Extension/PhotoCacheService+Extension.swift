@@ -19,8 +19,8 @@ extension PhotoCacheService {
 
         // MARK: - Public methods
 
-        func reloadRow(atIndexpath indexPath: IndexPath) {
-            tableViewController.tableView.reloadRows(at: [indexPath], with: .none)
+        func reloadRow() {
+            tableViewController.tableView.reloadData()
         }
     }
 }
