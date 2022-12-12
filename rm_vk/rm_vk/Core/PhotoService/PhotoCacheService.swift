@@ -34,7 +34,8 @@ final class PhotoCacheService {
         }
         return pathName
     }()
-    private var images = [String: UIImage]()
+
+    private var imageMap: [String: UIImage] = [:]
 
     // MARK: - Initializers
 
@@ -46,7 +47,7 @@ final class PhotoCacheService {
 
     func photo(atIndexpath indexPath: IndexPath, byUrl url: String) -> UIImage? {
         var image: UIImage?
-        if let photo = images[url] {
+        if let photo = imageMap[url] {
             image = photo
         } else if let photo = getImageFromCache(url: url) {
             image = photo
@@ -81,7 +82,7 @@ final class PhotoCacheService {
         guard lifeTime <= cacheLifeTime,
               let image = UIImage(contentsOfFile: fileName) else { return nil }
         DispatchQueue.main.async {
-            self.images[url] = image
+            self.imageMap[url] = image
         }
         return image
     }
@@ -92,7 +93,7 @@ final class PhotoCacheService {
                   let data = response.data,
                   let image = UIImage(data: data) else { return }
             DispatchQueue.main.async {
-                self.images[url] = image
+                self.imageMap[url] = image
             }
             self.saveImageToCache(url: url, image: image)
             DispatchQueue.main.async {
