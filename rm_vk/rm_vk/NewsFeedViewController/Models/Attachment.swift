@@ -1,8 +1,8 @@
-// Attachments.swift
+// Attachment.swift
 // Copyright © RoadMap. All rights reserved.
 
 /// Фото
-struct Attachments: Decodable {
+struct Attachment: Decodable {
     /// Фото
     let photo: Photo?
 }

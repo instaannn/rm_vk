@@ -23,8 +23,15 @@ final class NetworkService: NetworkServiceProtocol {
         )
     }
 
-    func fetchNews(completion: @escaping (Result<ResponseNews, Error>) -> Void) {
-        networkCoreService.downloadJson(url: RequestType.news.urlString, completion: completion)
+    func fetchNews(
+        from startTime: TimeInterval? = nil,
+        next startFrom: String? = "",
+        completion: @escaping (Result<ResponseNews, Error>) -> Void
+    ) {
+        networkCoreService.downloadJson(
+            url: RequestType.news(startTime: startTime ?? 0, startFrom: startFrom ?? "").urlString,
+            completion: completion
+        )
     }
 
     func fetchGroups() {
