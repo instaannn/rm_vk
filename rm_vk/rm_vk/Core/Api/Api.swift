@@ -10,5 +10,7 @@ enum Api {
     static let friendsFields = "&fields=nickname,photo_100,city"
     static let extended = "&extended=1"
     static let groupFields = "&fields=description"
-    static let newsFiltre = "&filtres=post"
+    static let newsFiltre = "&filtres=post,wall_photo,photo"
+    static let startTime = "&start_time="
+    static let startFrom = "&start_from="
 }

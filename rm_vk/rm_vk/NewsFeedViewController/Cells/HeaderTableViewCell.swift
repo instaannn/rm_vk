@@ -13,10 +13,12 @@ final class HeaderTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(headerItem: HeaderItem) {
-        titleLabel.text = headerItem.title
-        subtitleLabel.text = headerItem.subtitle
-        guard let url = URL(string: headerItem.avatarImageName) else { return }
+    func configure(item: Items) {
+        titleLabel.text = item.authorName
+        let date = Date(timeIntervalSince1970: item.date ?? 0)
+        guard let dateString = DateFormatter.bigDateFormatter.string(for: date) else { return }
+        subtitleLabel.text = dateString
+        guard let url = URL(string: item.avatarUrl ?? "") else { return }
         avatarImageView.load(url: url)
     }
 }

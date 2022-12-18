@@ -1,13 +1,15 @@
 // RequestType.swift
 // Copyright © RoadMap. All rights reserved.
 
+import Foundation
+
 /// типы запросов
 enum RequestType {
     case friends
     case groups
     case photos(id: String)
     case searchGroups(searchQuery: String)
-    case news
+    case news(startTime: TimeInterval, startFrom: String)
 
     var urlString: String {
         switch self {
@@ -19,8 +21,9 @@ enum RequestType {
             return "\(NetworkPath.photos)\(Api.acessToken)\(Api.extended)&owner_id=-\(id)"
         case let .searchGroups(searchQuery):
             return "\(NetworkPath.groupsSearch)\(Api.acessToken)&q=\(searchQuery)"
-        case .news:
-            return "\(NetworkPath.news)\(Api.acessToken)\(Api.newsFiltre)"
+        case let .news(startTime, startFrom):
+            return "\(NetworkPath.news)\(Api.acessToken)\(Api.newsFiltre)" +
+                "\(Api.startTime)\(startTime)\(Api.startFrom)\(startFrom)"
         }
     }
 }

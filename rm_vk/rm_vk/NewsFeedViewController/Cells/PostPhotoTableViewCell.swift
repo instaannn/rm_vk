@@ -11,8 +11,8 @@ final class PostPhotoTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(news: String) {
-        guard let url = URL(string: news) else { return }
+    func configure(item: Items) {
+        guard let url = URL(string: item.attachments?.first?.photo?.urls.last?.url ?? "") else { return }
         photoPostImageView.load(url: url)
     }
 }

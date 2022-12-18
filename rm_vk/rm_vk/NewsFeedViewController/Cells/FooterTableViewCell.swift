@@ -11,7 +11,8 @@ final class FooterTableViewCell: UITableViewCell {
 
     // MARK: - Public methods
 
-    func configure(count: Int) {
-        viewsCountLabel.text = String(count)
+    func configure(item: Items) {
+        guard let view = item.views?.count else { return }
+        viewsCountLabel.text = String(view)
     }
 }

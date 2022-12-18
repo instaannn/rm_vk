@@ -62,7 +62,7 @@
 		85D88BF5293FF3220096C6A8 /* PostTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BF4293FF3220096C6A8 /* PostTextTableViewCell.swift */; };
 		85D88BF7293FF6A20096C6A8 /* FooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BF6293FF6A20096C6A8 /* FooterTableViewCell.swift */; };
 		85D88BF9293FFD960096C6A8 /* PostItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BF8293FFD960096C6A8 /* PostItem.swift */; };
-		85D88BFB293FFEA90096C6A8 /* Attachments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BFA293FFEA90096C6A8 /* Attachments.swift */; };
+		85D88BFB293FFEA90096C6A8 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BFA293FFEA90096C6A8 /* Attachment.swift */; };
 		85D88BFD294003520096C6A8 /* PostPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BFC294003520096C6A8 /* PostPhotoTableViewCell.swift */; };
 		85D88BFF294015B20096C6A8 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88BFE294015B20096C6A8 /* DateFormatter+Extension.swift */; };
 		85D88C01294016CE0096C6A8 /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D88C00294016CE0096C6A8 /* Count.swift */; };
@@ -75,6 +75,7 @@
 		85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959772911AFAE001FA5DC /* UITextField+Extension.swift */; };
 		85D9597A2911B00C001FA5DC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D959792911B00C001FA5DC /* UIViewController+Extension.swift */; };
 		85D9599029132D6C001FA5DC /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D9598F29132D6C001FA5DC /* FriendsTableViewController.swift */; };
+		85EBC88C294F64F1000ED4DF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EBC88B294F64F1000ED4DF /* UILabel+Extension.swift */; };
 		85FBA73229428F950049931A /* PromiseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBA73129428F950049931A /* PromiseService.swift */; };
 		85FBA735294631140049931A /* PhotoCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBA734294631140049931A /* PhotoCacheService.swift */; };
 		85FBA73729466CE70049931A /* DataReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FBA73629466CE70049931A /* DataReloadable.swift */; };
@@ -138,7 +139,7 @@
 		85D88BF4293FF3220096C6A8 /* PostTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextTableViewCell.swift; sourceTree = "<group>"; };
 		85D88BF6293FF6A20096C6A8 /* FooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterTableViewCell.swift; sourceTree = "<group>"; };
 		85D88BF8293FFD960096C6A8 /* PostItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItem.swift; sourceTree = "<group>"; };
-		85D88BFA293FFEA90096C6A8 /* Attachments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments.swift; sourceTree = "<group>"; };
+		85D88BFA293FFEA90096C6A8 /* Attachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
 		85D88BFC294003520096C6A8 /* PostPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		85D88BFE294015B20096C6A8 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		85D88C00294016CE0096C6A8 /* Count.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Count.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		85D959772911AFAE001FA5DC /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		85D959792911B00C001FA5DC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		85D9598F29132D6C001FA5DC /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		85EBC88B294F64F1000ED4DF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		85FBA73129428F950049931A /* PromiseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseService.swift; sourceTree = "<group>"; };
 		85FBA734294631140049931A /* PhotoCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCacheService.swift; sourceTree = "<group>"; };
 		85FBA73629466CE70049931A /* DataReloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataReloadable.swift; sourceTree = "<group>"; };
@@ -404,7 +406,7 @@
 				85D88BD0293FBAF90096C6A8 /* ResponseNews.swift */,
 				85D88BD2293FBB340096C6A8 /* NewsFeed.swift */,
 				85D88BD4293FBBE90096C6A8 /* Items.swift */,
-				85D88BFA293FFEA90096C6A8 /* Attachments.swift */,
+				85D88BFA293FFEA90096C6A8 /* Attachment.swift */,
 				85D88BDE293FD2EC0096C6A8 /* CellType.swift */,
 				85D88BE0293FD31E0096C6A8 /* HeaderItem.swift */,
 				85D88BF8293FFD960096C6A8 /* PostItem.swift */,
@@ -488,6 +490,7 @@
 				8548BCFD292F988D00C49575 /* UIImageView+Extention.swift */,
 				85D88BFE294015B20096C6A8 /* DateFormatter+Extension.swift */,
 				85FBA73829466D8B0049931A /* PhotoCacheService+Extension.swift */,
+				85EBC88B294F64F1000ED4DF /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -705,7 +708,8 @@
 				85D88BD9293FCDE60096C6A8 /* NewsFeedViewController.swift in Sources */,
 				85D88BF9293FFD960096C6A8 /* PostItem.swift in Sources */,
 				85D959782911AFAE001FA5DC /* UITextField+Extension.swift in Sources */,
-				85D88BFB293FFEA90096C6A8 /* Attachments.swift in Sources */,
+				85EBC88C294F64F1000ED4DF /* UILabel+Extension.swift in Sources */,
+				85D88BFB293FFEA90096C6A8 /* Attachment.swift in Sources */,
 				8548BCEE292D83EA00C49575 /* RequestType.swift in Sources */,
 				8548BD1E29300AEE00C49575 /* NetworkServiceProtocol.swift in Sources */,
 				8548BD16292FEE9F00C49575 /* Photo.swift in Sources */,

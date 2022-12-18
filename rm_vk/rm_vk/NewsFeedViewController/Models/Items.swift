@@ -4,7 +4,7 @@
 import Foundation
 
 /// Новость
-struct Items: Decodable {
+class Items: Decodable {
     /// дата новости
     let date: TimeInterval?
     /// id владельца новости
@@ -12,9 +12,13 @@ struct Items: Decodable {
     /// текст новости
     let text: String?
     /// вложения к посту
-    let attachments: [Attachments]?
+    let attachments: [Attachment]?
     /// количество просмотров
     let views: Count?
+    /// имя автора новости
+    var authorName: String?
+    /// аватар автора новости
+    var avatarUrl: String?
 
     private enum CodingKeys: String, CodingKey {
         case sourceId = "source_id"
